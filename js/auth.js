@@ -38,5 +38,9 @@ document.getElementById('facebook-btn').addEventListener('click', () => {
 });
 
 document.getElementById('github-btn').addEventListener('click', () => {
+    const provider = new firebase.auth.GithubAuthProvider();
 
+    firebase.auth().signInWithPopup(provider).then((result) => {
+        console.log(result);
+    }).catch((error) => { console.log(error); });
 });
