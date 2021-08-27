@@ -6,63 +6,62 @@ const actionCodeSettings = {
 // войти / зарегистрироваться в аккаунт по почте
 document.getElementById('sendEmailVerified').addEventListener('click', () => {
     let emailInput = document.getElementById('email-input').value;
+    let passwordInput = document.getElementById('password-input').value;
 
-    if (emailInput != '') {
-        firebase.auth().sendSignInLinkToEmail(emailInput, actionCodeSettings).then(() => {
+    if (emailInput != '' || passwordInput != '') {
+        if (localStorage.getItem('user') === null) {
+            Swal.fire({
+                title: 'Введите имя и фамилию',
+                html: `<input type="text" id="name-input" class="swal2-input" placeholder="Имя">
+                        <input type="text" id="surname-input" class="swal2-input" placeholder="Фамилия">`,
+                confirmButtonText: 'Далее',
+                cancelButtonText: 'Отмена',
+                showCancelButton: true,
+                focusConfirm: false,
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                preConfirm: () => {
+                    const nameInput = Swal.getPopup().querySelector('#name-input').value
+                    const surnaneInput = Swal.getPopup().querySelector('#surname-input').value
 
-            if (localStorage.getItem('user') === null) {
-                Swal.fire({
-                    title: 'Введите имя и фамилию',
-                    html: `<input type="text" id="name-input" class="swal2-input" placeholder="Имя">
-                           <input type="text" id="surname-input" class="swal2-input" placeholder="Фамилия">`,
-                    confirmButtonText: 'Далее',
-                    cancelButtonText: 'Отмена',
-                    showCancelButton: true,
-                    focusConfirm: false,
-                    allowOutsideClick: false,
-                    allowEscapeKey: false,
-                    preConfirm: () => {
-                      const nameInput = Swal.getPopup().querySelector('#name-input').value
-                      const surnaneInput = Swal.getPopup().querySelector('#surname-input').value
-    
-                      if (!nameInput || !surnaneInput) {
-                        Swal.showValidationMessage(`Пожалуйста, введите имя и фамилию`);
-                      }
-    
-                      return { name: nameInput, surname: surnaneInput }
+                    if (!nameInput || !surnaneInput) {
+                    Swal.showValidationMessage(`Пожалуйста, введите имя и фамилию`);
                     }
-                }).then((result) => {
-                    let fullName = `${result.value.name} ${result.value.surname}`;
-    
-                    localStorage.setItem('user', JSON.stringify({
-                        email: emailInput,
-                        fullName: fullName,
-                    }));
-    
-                    db.collection("users/").doc(`${emailInput}`).set({
-                        email: emailInput,
-                        fullName: fullName,
-                    }).then(() => {
-                        Swal.fire({
-                            icon: 'success',
-                            text: 'Проверьте свою почту!',
-                        });
-                    }).catch((error) => { console.log(error); });
-                })
-            } else {
+
+                    return { name: nameInput, surname: surnaneInput }
+                }
+            }).then((result) => {
+                localStorage.setItem('user', JSON.stringify({
+                    email: emailInput,
+                    name: result.value.name,
+                    surname: result.value.surname,
+                }));
+
+                db.collection("users/").doc(`${emailInput}`).set({
+                    email: emailInput,
+                    name: result.value.name,
+                    surname: result.value.surname,
+                }).then(() => {
+                    firebase.auth().createUserWithEmailAndPassword(emailInput, passwordInput).then(() => {
+                        location.href = 'profile.html';
+                    }).catch((error) => { console.error(error); });
+                }).catch((error) => { console.log(error); });
+            })
+        } else {
+            firebase.auth().signInWithEmailAndPassword(emailInput, passwordInput).then(() => {
                 db.collection("users/").doc(`${emailInput}`).get().then((doc) => {
                     if (doc.exists) {
-                        console.log("Document data:", doc.data());
+                        location.href = 'profile.html';
                     } else {
                         console.log("No such document!");
                     }
                 }).catch((error) => { console.log(error); });
-            }
-        }).catch((error) => { console.log(error); });
+            }).catch((error) => { console.log(error); });
+        }
     } else {
         Swal.fire({
             icon: 'error',
-            text: "Введите свой Email!"
+            text: "Введите Email и пароль!"
         });
     }
 });
@@ -74,12 +73,14 @@ document.getElementById('google-btn').addEventListener('click', () => {
     firebase.auth().signInWithPopup(provider).then((result) => {
         localStorage.setItem('user', JSON.stringify({ 
             email: emailInput,
-            fullName: result.user.displayName,
+            name: result.user.displayName,
+            surname: '',
         }));
 
         db.collection("users/").doc(`${emailInput}`).set({
             email: emailInput,
-            fullName: result.user.displayName,
+            name: result.user.displayName,
+            surname: '',
         }).then(() => {
             Swal.fire({
                 icon: 'success',
@@ -87,7 +88,7 @@ document.getElementById('google-btn').addEventListener('click', () => {
             });
         }).catch((error) => { console.log(error); });
 
-        location.href = 'index.html';
+        location.href = 'profile.html';
     }).catch((error) => { console.log(error); });
 });
 

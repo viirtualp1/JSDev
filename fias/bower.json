@@ -1,0 +1,21 @@
+{
+  "name": "jquery.fias",
+  "version": "1.0.0",
+  "main": "jquery.kladr.min.js",
+  "homepage": "https://github.com/fias-api/jquery",
+  "license": "Public Domain",
+  "description": "jQuery Plugin For kladr-api.ru",
+  "keywords": [
+    "kladr",
+    "jquery",
+    "fias"
+  ],
+  "ignore": [
+    "gulpfile.js",
+    "package.json",
+    "*.md"
+  ],
+  "dependencies": {
+    "jquery": ">=1.6"
+  }
+}

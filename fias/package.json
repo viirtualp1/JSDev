@@ -1,0 +1,33 @@
+{
+  "name": "jquery.fias",
+  "version": "1.0.0",
+  "description": "jQuery Plugin For kladr-api.ru",
+  "main": "jquery.kladr.min.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "build": "npm install && (gulp || node node_modules/gulp/bin/gulp.js)"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fias-api/jquery.git"
+  },
+  "author": {
+    "name": "kladr-api.ru",
+    "email": "info@kladr-api.ru"
+  },
+  "keywords": [
+    "kladr",
+    "jquery"
+  ],
+  "license": "Public Domain",
+  "homepage": "https://github.com/fias-api/jquery",
+  "devDependencies": {
+    "gulp": "^3.8.8",
+    "gulp-csso": "^0.2.9",
+    "gulp-uglify": "^1.0.1",
+    "gulp-concat": "^2.4.1",
+    "gulp-rename": "^1.2.0"
+  }
+}
