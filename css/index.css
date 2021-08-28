@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+#app { margin-top: 2rem; }
+
+#text-responses, #number-responses,
+#text-views, #number-views,
+#text-favourites, #number-favourites { display: inline; }
+
+#number-responses { margin-left: 1rem; }
+#number-views { margin-left: 2.6rem; }
+#number-favourites { margin-left: 2.2rem; }
+
+#icon-responses, #icon-views, #icon-favourites { color: #A9A9A9; font-size: 1rem; }
+#text-responses, #text-views, #text-favourites { color: #656565; font-size: 0.9rem; }
+#number-responses, #number-views, #number-favourites { color: #000; font-weight: 500; }
+
+#icon-responses { margin-right: 0.8rem; }
+#icon-views, #icon-favourites { margin-right: 1rem; }
+
+.salary-vacancy { float: right; }
+
+.info-user { margin-bottom: 2rem; }
+
+.recommended-for-you { margin-top: 2rem; }
+.vacancy-recommended { margin-top: 1rem; }
+
+#title-recommended-vacancy { margin-bottom: 0; }
+
+#open-recommended-vacancy { 
+    float: right; 
+    font-size: 1.4rem; 
+    margin-top: 1rem; 
+    margin-left: 0.5rem;
+    cursor: pointer; 
+}
+
+.profArea-title, .profArea-current, .profArea-choose-other,
+.branch-title, .branch-current, .branch-choose-other  { font-size: 0.9rem; }
+
+.profArea-current, .profArea-choose-other { margin-left: 1rem; }
+.branch-current { margin-left: 3.6rem; }
+.branch-choose-other { margin-left: 1rem; }
+
+.profArea-current, 
+.branch-current { text-decoration: underline; }
+
+.profArea-choose-other,
+.branch-choose-other { color: #316FE6; cursor: pointer; }
+
+.branch { margin-top: 1rem; }
+
+#currencySelect { float: right; }
+
+.rightCollapses { position: fixed; z-index: 3; right: 0; }
+#user-info-collapse { width: 300px; height: 400px; margin: 1rem; }
+
+@media screen and (max-width: 500px) {
+    .salary-vacancy { 
+        display: block; 
+        float: none;
+    }
+}

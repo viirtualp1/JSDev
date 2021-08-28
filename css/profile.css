@@ -1,51 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 
-.top-nav {
-    margin-top: 0.3rem;
-    margin-bottom: 0.3rem;
-}
-
-#nav-city, #nav-search-work, 
-#nav-raise-resume, #nav-all-services { display: inline; font-size: 0.9rem; }
-
-#nav-search-work, #nav-raise-resume, #nav-all-services { float: right; margin-left: 1rem; }
-
-#nav-raise-resume, #nav-all-services, #nav-city { color: #387ADD; cursor: pointer; }
-
-#nav-city {
-    margin-left: 3rem;
-    text-decoration: underline;
-}
-
-#nav-all-services { margin-right: 2rem; }
-
-nav { 
-    background: #4D4D4D;
-}
-
-.nav-link .fas {
-    font-size: 1.2rem;
-    margin-left: 2rem;
-    color: #fff;
-    cursor: pointer;
-}
-
-#ul-nav {
-    float: right;
-    margin-right: 2rem;
-}
-
-#title-js {
-    margin-left: 5rem;
-    font-size: 2rem;
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
-    text-shadow: 1.5px 0 1.5px #000, 
-    0 1.5px 1.5px #000, 
-    -1.5px 0 1.5px #000, 
-    0 -1.5px 1.5px #000;
-}
-
 .modal-content { padding: 1.5rem; }
 
 #keySkills-content { width: 600px; }
@@ -64,6 +18,11 @@ nav {
     cursor: pointer; 
     color: rgb(59, 59, 59); 
     font-size: 0.9rem; 
+}
+
+#create-resume-btn { 
+    width: 150px;
+    margin: auto;
 }
 
 @media screen and (max-width: 600px) {

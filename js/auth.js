@@ -43,17 +43,23 @@ document.getElementById('sendEmailVerified').addEventListener('click', () => {
                     surname: result.value.surname,
                 }).then(() => {
                     firebase.auth().createUserWithEmailAndPassword(emailInput, passwordInput).then(() => {
-                        location.href = 'profile.html';
+                        db.collection('users').doc(`${emailInput}`).get().then((doc) => {
+                            if (doc.data().phone) {
+                                location.href = 'index.html';
+                            } else {
+                                location.href = 'profile.html';
+                            }
+                        });
                     }).catch((error) => { console.error(error); });
                 }).catch((error) => { console.log(error); });
             })
         } else {
             firebase.auth().signInWithEmailAndPassword(emailInput, passwordInput).then(() => {
                 db.collection("users/").doc(`${emailInput}`).get().then((doc) => {
-                    if (doc.exists) {
-                        location.href = 'profile.html';
+                    if (doc.data().phone) {
+                        location.href = 'index.html';
                     } else {
-                        console.log("No such document!");
+                        location.href = 'profile.html';
                     }
                 }).catch((error) => { console.log(error); });
             }).catch((error) => { console.log(error); });
@@ -72,13 +78,13 @@ document.getElementById('google-btn').addEventListener('click', () => {
 
     firebase.auth().signInWithPopup(provider).then((result) => {
         localStorage.setItem('user', JSON.stringify({ 
-            email: emailInput,
+            email: result.user.email,
             name: result.user.displayName,
             surname: '',
         }));
 
-        db.collection("users/").doc(`${emailInput}`).set({
-            email: emailInput,
+        db.collection("users/").doc(`${result.user.email}`).set({
+            email: result.user.email,
             name: result.user.displayName,
             surname: '',
         }).then(() => {
@@ -88,7 +94,13 @@ document.getElementById('google-btn').addEventListener('click', () => {
             });
         }).catch((error) => { console.log(error); });
 
-        location.href = 'profile.html';
+        db.collection('users').doc(`${result.user.email}`).get().then((doc) => {
+            if (doc.data().phone) {
+                location.href = 'index.html';
+            } else {
+                location.href = 'profile.html';
+            }
+        });
     }).catch((error) => { console.log(error); });
 });
 

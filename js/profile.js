@@ -1,18 +1,13 @@
 firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-        const resumeModal = new bootstrap.Modal(document.getElementById('resume')).show();
-        const user = JSON.parse(localStorage.getItem('user'));
-
-        document.getElementById('nav-city').innerHTML = `${locationUser.city} (${locationUser.region})`;    
-        document.getElementById('name-input').value = user.name;
-        document.getElementById('surname-input').value = user.surname;
-
-        $.fias.token = '236fKe9rzhiE3SB58TbnnaQ4nrY6FEiY';
-        $.fias.url = 'https://kladr-api.ru/api.php';
-    } else {
+    if (!user) {
         location.href = 'auth.html';
     }
 });
+
+let user = JSON.parse(localStorage.getItem('user'));
+
+$.fias.token = '236fKe9rzhiE3SB58TbnnaQ4nrY6FEiY';
+$.fias.url = 'https://kladr-api.ru/api.php';
 
 // City input
 $(function () {
@@ -70,13 +65,117 @@ $(function () {
 	}
 });
 
-let keySkills = [];
-let workplaces = [];
-let indexWorkplace = 0;
+let vue = new Vue({
+    el: '#app',
+    data: {
+        indexWorkplace: 0,
+        keySkillsInput: '',
+        locationUser: {
+            city: 'Москва',
+            region: 'Московская область',
+            country: 'Россия',
+        },
 
-function currencySelect(currency) {
-    document.getElementById('current-btn').innerHTML = currency;
-    currencyUser = currency
+        workplaces: [{
+            monthStart: '',
+            yearStart: '',
+
+            monthEnd: '',
+            yearEnd: '',
+
+            nameOrganization: '',
+            position: '',
+            responsibilities: '',
+        }],
+
+        resume: {
+            name: user.name,
+            surname: user.surname,
+            phone: '',
+            city: '',
+            date: '',
+            sex: '',
+            citizenship: '',
+            experienceWork: '',
+            careerObj: '',
+            salary: '',
+            currencyUser: 'руб.',
+            professionalArea: '',
+            keySkills: [],
+            workplacesArray: [],
+            aboutMe: '',
+            education: '',
+            nativeLanguage: '',
+            foreignLanguages: '',
+        }
+    },
+
+    methods: {
+        currencySelect: function (currency) {
+            document.getElementById('current-btn').innerHTML = currency;
+            this.resume.currencyUser = currency
+        },
+
+        keySkillsAdd: function () {
+            this.resume.keySkills.push(this.resume.keySkillsInput);
+        
+            document.getElementById('keySkills-content').innerHTML += `
+                <span class="badge keySkill bg-secondary" id="${this.resume.keySkillsInput}">${this.resume.keySkillsInput} <i class="fas fa-trash deleteKeySkill" onclick="deleteKeySkill('${this.resume.keySkillsInput}')"></i></span>
+            `;
+        },
+
+        addWorkPlace: function () {
+            let workplacesDiv = document.getElementById('workplaces-content');
+        
+            this.resume.workplacesArray.push({
+                monthStartWork: this.workplaces[0].monthStart,
+                yearStartWork: this.workplaces[0].yearStart,
+        
+                monthEndWork: this.workplaces[0].monthEnd,
+                yearEndWork: this.workplaces[0].yearEnd,
+        
+                nameOrganization: this.workplaces[0].nameOrganization,
+                position: this.workplaces[0].position,
+                workplaceResponsibilities: this.workplaces[0].responsibilities,
+            });
+        
+            workplacesDiv.innerHTML += `
+                <div class="card card-workplace" id="${this.indexWorkplace}" style="width: 18rem;">
+                    <div class="card-body">
+                        <a href="#">${this.workplaces[0].monthStart} ${this.workplaces[0].yearStart} - ${this.workplaces[0].monthEnd} ${this.workplaces[0].yearEnd}</a>
+        
+                        <h5 class="card-title">${this.workplaces[0].position}</h5>
+                        <p class="card-text">${this.workplaces[0].nameOrganization }</p>
+        
+                        <button class="btn btn-outline-danger" onclick="deleteWorkplace(${this.indexWorkplace})"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+            `;    
+        
+            this.indexWorkplace++;
+        },
+
+        createResume: function () {
+            db.collection('users').doc(`${user.email}`).set(this.resume);
+
+            location.href = 'index.html';
+        }
+    }
+})
+
+window.onload = () => {
+    let resumeModal = new bootstrap.Modal(document.getElementById('resume'));
+    resumeModal.show();
+
+    document.getElementById('nav-city').innerHTML = `${vue.locationUser.city} (${vue.locationUser.region})`;
+};
+
+function deleteKeySkill (value) {
+    let indexElement = vue.resume.keySkills.indexOf(value);
+    let htmlElement = document.getElementById(value);
+    
+    vue.resume.keySkills.splice(indexElement, 1);
+    htmlElement.parentNode.removeChild(htmlElement);
 }
 
 function salaryNumbersSort() {
@@ -84,65 +183,9 @@ function salaryNumbersSort() {
     document.getElementById('salary-input').value = salaryInput.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 }
 
-function keySkillsAdd() {
-    let keySkillsInput = document.getElementById('keySkills-input').value;
-    keySkills.push(keySkillsInput);
-
-    document.getElementById('keySkills-content').innerHTML += `
-        <span class="badge keySkill bg-secondary" id="${keySkillsInput}">${keySkillsInput} <i class="fas fa-trash deleteKeySkill" onclick="deleteKeySkill('${keySkillsInput}')"></i></span>
-    `;
-}
-
-function deleteKeySkill(value) {
-    let indexElement = keySkills.indexOf(value);
-    let htmlElement = document.getElementById(value);
-    
-    keySkills.splice(indexElement, 1);
-    htmlElement.parentNode.removeChild(htmlElement);
-}
-
-function addWorkPlace() {
-    let monthStartWorkInput = document.getElementById('month-start-work').value,
-        yearStartWorkInput = document.getElementById('year-start-work').value,
-        monthEndWorkInput = document.getElementById('month-end-work').value,
-        yearEndWorkInput = document.getElementById('year-end-work').value,
-        nameOrganizationInput = document.getElementById('name-organization-input').value,
-        positionInput = document.getElementById('position-input').value,
-        workplaceResponsibilitiesInput = document.getElementById('workplaceResponsibilities-textarea').value;
-
-    let workplacesDiv = document.getElementById('workplaces-content');
-
-    workplaces.push({
-        monthStartWork: monthStartWorkInput,
-        yearStartWork: yearStartWorkInput,
-
-        monthEndWork: monthEndWorkInput,
-        yearEndWork: yearEndWorkInput,
-
-        nameOrganization: nameOrganizationInput,
-        position: positionInput,
-        workplaceResponsibilities: workplaceResponsibilitiesInput,
-    });
-
-    workplacesDiv.innerHTML += `
-        <div class="card card-workplace" id="${indexWorkplace}" style="width: 18rem;">
-            <div class="card-body">
-                <a href="#">${monthStartWorkInput} ${yearStartWorkInput} - ${monthEndWorkInput} ${yearEndWorkInput}</a>
-
-                <h5 class="card-title">${positionInput}</h5>
-                <p class="card-text">${nameOrganizationInput}</p>
-
-                <button class="btn btn-outline-danger" onclick="deleteWorkplace(${indexWorkplace})"><i class="fas fa-trash"></i></button>
-            </div>
-        </div>
-    `;    
-
-    indexWorkplace++;
-}
-
 function deleteWorkplace(index) {
     let element = document.getElementById(`${index}`);
 
-    workplaces.splice(index, 1);
+    vue.resume.workplacesArray.splice(index, 1);
     element.parentNode.removeChild(element);
 }
