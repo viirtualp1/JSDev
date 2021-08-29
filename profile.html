@@ -132,7 +132,7 @@
                             <label for="salary-input" class="form-label">Зарплата</label>
     
                             <div class="input-group">
-                                <input type="text" v-model="resume.salary" class="form-control" on="salaryNumbersSort()" id="salary-input">
+                                <input type="text" v-model="resume.salary" class="form-control" onblur="salaryNumbersSort()" id="salary-input">
     
                                 <button class="btn btn-outline-secondary dropdown-toggle" id="current-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
                                 <ul class="dropdown-menu dropdown-menu-end">

@@ -58,6 +58,27 @@
 .rightCollapses { position: fixed; z-index: 3; right: 0; }
 #user-info-collapse { width: 300px; height: 400px; margin: 1rem; }
 
+#resume-user-modal .modal-content { padding: 1.5rem; }
+
+.keySkill { 
+    font-size: 1rem; 
+    padding: 0.5rem;
+    margin-top: 1rem;
+    margin-right: 1rem;
+}
+
+.deleteKeySkill { 
+    margin-left: 0.5rem; 
+    cursor: pointer; 
+    color: rgb(59, 59, 59); 
+    font-size: 0.9rem; 
+}
+
+#update-resume-btn { 
+    width: 150px;
+    margin: auto;
+}
+
 @media screen and (max-width: 500px) {
     .salary-vacancy { 
         display: block; 

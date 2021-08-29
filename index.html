@@ -14,7 +14,7 @@
     <div class="top-nav">
         <div id="nav-city"></div>
 
-        <div id="nav-all-services">Все сервисы</div>
+        <div id="nav-all-services" data-bs-toggle="modal" data-bs-target="#all-services-modal">Все сервисы</div>
         <div id="nav-raise-resume">Автоподнятие резюме</div>
         <div id="nav-search-work">Поиска работы</div>
     </div>
@@ -61,7 +61,7 @@
                     <h5 class="card-title" id="name-user"></h5>
                     <p class="card-text" id="email-user"></p>
 
-                    <a href="#" class="btn btn-outline-primary">Мое резюме</a>
+                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#resume-user-modal">Мое резюме</button>
                     <button onclick="signOut()" class="btn btn-outline-danger">Выйти</button>
                 </div>
             </div>
@@ -136,7 +136,7 @@
                         <h5>Уровень дохода</h5>
                         <form class="mb-3">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="50 000 руб." on="salaryNumbersSort()" id="salary-input">
+                                <input type="text" class="form-control" placeholder="50 000 руб." onblur="salaryNumbersSort()" id="salary-input">
     
                                 <button class="btn btn-outline-secondary dropdown-toggle" id="current-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
                                 <ul class="dropdown-menu dropdown-menu-end">
@@ -217,6 +217,271 @@
 
                         <button class="btn btn-outline-primary">Искать</button>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="resume-user-modal" tabindex="-1" aria-labelledby="resume-user-modal" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <h3>Контактные данные</h3>
+                    <form class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label for="name-input" class="form-label">Имя</label>
+                            <input type="text" v-model="user.name" class="form-control" id="name-input">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="surname-input" class="form-label">Фамилия</label>
+                            <input type="text" v-model="user.surname" class="form-control" id="surname-input">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="phone-input" class="form-label">Моб. телефон</label>
+                            <input type="text" v-model="user.phone" class="form-control" id="phone-input">
+                        </div>
+                        <div class="col-md-6" id="city-div">
+                            <div class="address">
+                                <div class="field">
+                                    <label for="city-input" class="form-label">Город проживания</label>
+                                    <input type="text" v-model="user.city" class="form-control" id="city-input" name="city">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+    
+                    <h3>Основаная информация</h3>
+                    <form class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label for="date-input" class="form-label">Дата рождения (пример: 01.01.2021)</label>
+                            <input type="text" v-model="user.date" class="form-control" id="date-input" />
+                        </div>
+                        <div class="col-md-6">
+                            <label for="date-input" class="form-label">Пол</label>
+                            <div class="form-check">
+                                <input class="form-check-input" v-model="user.sex" value="Мужской" type="radio" name="sex" id="man">
+                                <label class="form-check-label" for="man">
+                                    Мужской
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" v-model="user.sex" value="Женский" type="radio" name="sex" id="woman">
+                                <label class="form-check-label" for="woman">
+                                    Женский
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="citizenship-input" class="form-label">Гражданство</label>
+                            <input type="text" v-model="user.citizenship" class="form-control" id="citizenship-input" />
+                        </div>
+                        <div class="col-md-6">
+                            <label for="haveExperienceWork" class="form-label">Опыт работы</label>
+                            <div class="form-check">
+                                <input class="form-check-input" v-model="user.experienceWork" value="Есть опыт работы" type="radio" name="experienceWork" id="haveExperienceWork">
+                                <label class="form-check-label" for="haveExperienceWork">
+                                    Есть опыт работы
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" v-model="user.experienceWork" value="Нет опыта работы" type="radio" name="experienceWork" id="noExperienceWork">
+                                <label class="form-check-label" for="noExperienceWork">
+                                    Нет опыта работы
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+    
+                    <h3>Специальность</h3>
+                    <form class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label for="career-objective-input" class="form-label">Желаемая должность</label>
+                            <input type="text" v-model="user.careerObj" class="form-control" id="career-objective-input">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="salary-input" class="form-label">Зарплата</label>
+    
+                            <div class="input-group">
+                                <input type="text" v-model="user.salary" class="form-control" onblur="salaryNumbersSort()" id="salary-input">
+    
+                                <button class="btn btn-outline-secondary dropdown-toggle" id="current-currency-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li @click="currencySelect('руб')"><a class="dropdown-item" href="#">руб</a></li>
+                                    <li @click="currencySelect('EUR')"><a class="dropdown-item" href="#">EUR</a></li>
+                                    <li @click="currencySelect('USD')"><a class="dropdown-item" href="#">USD</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="phone-input" class="form-label">Проф. область</label>
+                            <select name="professionalArea" v-model="user.professionalArea" id="professionalAreaSelect" class="form-select">
+                                <option value="Автомобильный бизнес">Автомобильный бизнес</option>
+                                <option value="Административный персонал">Административный персонал</option>
+                                <option value="Банки, инвестиции, лизинг">Банки, инвестиции, лизинг</option>
+                                <option value="Безопасность">Безопасность</option>
+                                <option value="Бухгалтерия, управленческий учет, финансы предприятия">Бухгалтерия, управленческий учет, финансы предприятия</option>
+                                <option value="Высший менеджмент">Высший менеджмент</option>
+                                <option value="Государственная служба, некоммерческие организации">Государственная служба, некоммерческие организации</option>
+                                <option value="Добыча сырья">Добыча сырья</option>
+                                <option value="Домашний персонал">Домашний персонал</option>
+                                <option value="Закупки">Закупки</option>
+                                <option value="Инсталляция и сервис">Инсталляция и сервис</option>
+                                <option value="Информационные технологии, интернет, телеком">Информационные технологии, интернет, телеком</option>
+                                <option value="Искусство, развлечения, масс-медиа">Искусство, развлечения, масс-медиа</option>
+                                <option value="Консультирование">Консультирование</option>
+                                <option value="Маркетинг, реклама, PR">Маркетинг, реклама, PR</option>
+                                <option value="Медицина, фармацевтика">Медицина, фармацевтика</option>
+                                <option value="Наука, образование">Наука, образование</option>
+                                <option value="Начало карьеры, студенты">Начало карьеры, студенты</option>
+                                <option value="Продажи">Продажи</option>
+                                <option value="Производство, сельское хозяйство">Производство, сельское хозяйство</option>
+                                <option value="Рабочий персонал">Рабочий персонал</option>
+                                <option value="Спортивные клубы, фитнес, салоны красоты">Спортивные клубы, фитнес, салоны красоты</option>
+                                <option value="Страхование">Страхование</option>
+                                <option value="Строительство, недвижимость">Строительство, недвижимость</option>
+                                <option value="Транспорт, логистика">Транспорт, логистика</option>
+                                <option value="Туризм, гостиницы, рестораны">Туризм, гостиницы, рестораны</option>
+                                <option value="Управление персоналом, тренинги">Управление персоналом, тренинги</option>
+                                <option value="Юристы">Юристы</option>
+                            </select>
+                        </div>
+                    </form>
+    
+                    <h3>Опыт работы</h3>
+                    <form class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <div class="work-places">
+                                <button class="btn btn-outline-primary mb-3" type="button" data-bs-toggle="modal" data-bs-target="#addWorkPlace-modal" id="add-place-work-btn">Добавить место работы</button>    
+                                
+                                <div id="workplaces-content">
+                                    <div class="card card-workplace" v-for="workplace in user.workplacesArray" :id="workplace.indexWorkplace" style="width: 18rem;">
+                                        <div class="card-body">
+                                            <a href="#" class="mb-2">{{ workplace.monthStartWork }} {{ workplace.yearStartWork }} - {{ workplace.monthEndWork }} {{ workplace.yearEndWork }}</a>
+                            
+                                            <h5 class="card-title">{{ workplace.position }}</h5>
+                                            <p class="card-text">{{ workplace.nameOrganization }}</p>
+                            
+                                            <button class="btn btn-outline-danger" @click="deleteWorkplace(workplace.indexWorkplace)"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="about-me">
+                                <label for="about-textarea" class="form-label">О себе</label>
+                                <textarea class="form-control mb-3" v-model="user.aboutMe" id="about-textarea"></textarea>
+                            </div>
+                            
+                            <div class="keySkills">
+                                <label for="keySkills-input" class="form-label">Ключевые навыки</label>
+    
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Начните вводите здесь" v-model="keySkillsInput" id="keySkills-input">
+                                    <button class="btn btn-success" type="button" id="add-keySkill-btn" @click="keySkillsAdd()"><i class="fas fa-check"></i></button>
+                                </div>
+    
+                                <div id="keySkills-content">
+                                    <span class="badge keySkill bg-secondary" v-for="keySkill in user.keySkills" :id="keySkill">{{ keySkill }} <i class="fas fa-trash deleteKeySkill" @click="deleteKeySkill(keySkill)"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+    
+                    <h3>Образование</h3>
+                    <form class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label for="level-select">Уровень</label>
+                            <select class="form-select mt-2" v-model="user.education" id="level-select">
+                                <option value="Среднее">Среднее</option>
+                                <option value="Среднее специальное">Среднее специальное</option>
+                                <option value="Неоконченное высшее">Неоконченное высшее</option>
+                                <option value="Высшее">Высшее</option>
+                                <option value="Бакалавр">Бакалавр</option>
+                                <option value="Магистр">Магистр</option>
+                                <option value="Кандидат наук">Кандидат наук</option>
+                                <option value="Доктор наук">Доктор наук</option>
+                            </select>
+                        </div>
+                    </form>
+    
+                    <h3>Владение языками</h3>
+                    <form class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label for="nativeLanguage-input">Родной язык</label>
+                            <input type="text" class="form-control" v-model="user.nativeLanguage" id="nativeLanguage-input" placeholder="Родной язык">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="foreignLanguages-input">Иностранные языки</label>
+                            <input type="text" class="form-control" v-model="user.foreignLanguages" id="foreignLanguages-input" placeholder="Укажите через запятую">
+                        </div>
+                    </form>
+
+                    <button class="btn btn-outline-success mb-3" id="update-resume-btn" @click="updateResume()">Обновить резюме</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="addWorkPlace-modal" tabindex="-1" aria-labelledby="addWorkPlace-modal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered ">
+              <div class="modal-content">
+                    <form class="m-auto text-center">
+                        <h4 class="mt-3">Добавить место работы</h4>
+    
+                        <p class="fw-bold">Начало работы</p>
+                        <div class="input-group mb-3">
+                            <select class="form-select" v-model="workplaces[0].monthStart" id="month-start-work">
+                                <option value="Январь">Январь</option>
+                                <option value="Февраль">Февраль</option>
+                                <option value="Март">Март</option>
+                                <option value="Апрель">Апрель</option>
+                                <option value="Май">Май</option>
+                                <option value="Июнь">Июнь</option>
+                                <option value="Июль">Июль</option>
+                                <option value="Август">Август</option>
+                                <option value="Сентябрь">Сентябрь</option>
+                                <option value="Октябрь">Октябрь</option>
+                                <option value="Ноябрь">Ноябрь</option>
+                                <option value="Декабрь">Декабрь</option>
+                            </select>
+                            <input class="form-control" v-model="workplaces[0].yearStart" type="number" id="year-start-work">
+                        </div>
+    
+                        <p class="fw-bold">Окончание работы</p>
+                        <div class="input-group mb-3">
+                            <select class="form-select" v-model="workplaces[0].monthEnd" id="month-end-work">
+                                <option value="Январь">Январь</option>
+                                <option value="Февраль">Февраль</option>
+                                <option value="Март">Март</option>
+                                <option value="Апрель">Апрель</option>
+                                <option value="Май">Май</option>
+                                <option value="Июнь">Июнь</option>
+                                <option value="Июль">Июль</option>
+                                <option value="Август">Август</option>
+                                <option value="Сентябрь">Сентябрь</option>
+                                <option value="Октябрь">Октябрь</option>
+                                <option value="Ноябрь">Ноябрь</option>
+                                <option value="Декабрь">Декабрь</option>
+                            </select>
+                            <input class="form-control" v-model="workplaces[0].yearEnd" type="number" id="year-end-work">
+                         </div>
+    
+                        <p class="fw-bold">Организация</p>
+                        <input type="text" class="form-control mb-3" v-model="workplaces[0].nameOrganization" id="name-organization-input" placeholder="Название организации">
+    
+                        <p class="fw-bold">Должность</p>
+                        <input type="text" class="form-control mb-3" v-model="workplaces[0].position" id="position-input" placeholder="Должность">
+                        
+                        <p class="fw-bold">Обязанности на рабочем месте</p>
+                        <textarea class="form-control mb-3" v-model="workplaces[0].responsibilities" id="workplaceResponsibilities-textarea"></textarea>
+    
+                        <button type="button" class="btn btn-success mb-3" @click="addWorkPlace()">Добавить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="all-services-modal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered ">
+                <div class="modal-content">
+                    <a class="nav-link" href="createVacancy.html">Создать вакансию</a>
                 </div>
             </div>
         </div>
