@@ -121,10 +121,10 @@ function editSkill(skill, index, value) {
 };
 
 function deleteKeySkill (keySkill) {
-    let indexElement = vue.keySkills.indexOf(keySkill);
+    let indexElement = vue.vacancy.keySkills.indexOf(keySkill);
     let htmlElement = document.getElementById(keySkill);
     
-    vue.keySkills.splice(indexElement, 1);
+    vue.vacancy.keySkills.splice(indexElement, 1);
     htmlElement.parentNode.removeChild(htmlElement);
 }
 
