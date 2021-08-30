@@ -1,3 +1,5 @@
+const getRandId = () => Math.floor(Math.random() * Number.MAX_SAFE_INTEGER).toString();
+
 let vue = new Vue({
     el: '#app',
     data: {
@@ -14,6 +16,8 @@ let vue = new Vue({
             aboutVacancy: '',
             company: '',
             salary: '',
+            id: getRandId(),
+            profArea: '',
             currencySalary: '',
             skills: {
                 conditions: {},
@@ -82,6 +86,14 @@ let vue = new Vue({
 
         createVacancy: function () {
             db.collection('vacancies').doc(`${this.vacancy.name}`).set(this.vacancy);
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Уведомление',
+                text: 'Вакансия успешно создана!',
+            });
+
+            location.reload();
         }
     }
 })
@@ -186,8 +198,3 @@ $(function () {
 		}
 	}
 });
-
-function salaryNumbersSort() {
-    let salaryInput = document.getElementById('salary-vacancy-input').value;
-    document.getElementById('salary-vacancy-input').value = salaryInput.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-}

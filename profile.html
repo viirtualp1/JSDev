@@ -129,10 +129,10 @@
                             <input type="text" class="form-control" v-model="resume.careerObj" id="career-objective-input">
                         </div>
                         <div class="col-md-6">
-                            <label for="salary-input" class="form-label">Зарплата</label>
+                            <label for="salary-vacancy-input" class="form-label">Зарплата</label>
     
                             <div class="input-group">
-                                <input type="text" v-model="resume.salary" class="form-control" onblur="salaryNumbersSort()" id="salary-input">
+                                <input type="text" v-model="resume.salary" class="form-control" onblur="salaryNumbersSort()" id="salary-vacancy-input">
     
                                 <button class="btn btn-outline-secondary dropdown-toggle" id="current-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
                                 <ul class="dropdown-menu dropdown-menu-end">
@@ -232,7 +232,7 @@
                         </div>
                     </form>
     
-                    <button class="btn btn-outline-success" id="create-resume-btn" @click="createResume()">Создать резюме</button>
+                    <button type="button" class="btn btn-outline-success" id="create-resume-btn" @click="createResume()">Создать резюме</button>
                 </div>
             </div>
         </div>

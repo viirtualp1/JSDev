@@ -107,6 +107,9 @@ let vue = new Vue({
             education: '',
             nativeLanguage: '',
             foreignLanguages: '',
+            numberFavourites: 0,
+            numberResponses: 0,
+            numberViews: 0,
         }
     },
 
@@ -117,10 +120,10 @@ let vue = new Vue({
         },
 
         keySkillsAdd: function () {
-            this.resume.keySkills.push(this.resume.keySkillsInput);
+            this.resume.keySkills.push(this.keySkillsInput);
         
             document.getElementById('keySkills-content').innerHTML += `
-                <span class="badge keySkill bg-secondary" id="${this.resume.keySkillsInput}">${this.resume.keySkillsInput} <i class="fas fa-trash deleteKeySkill" onclick="deleteKeySkill('${this.resume.keySkillsInput}')"></i></span>
+                <span class="badge keySkill bg-secondary" id="${this.keySkillsInput}">${this.keySkillsInput} <i class="fas fa-trash deleteKeySkill" onclick="deleteKeySkill('${this.keySkillsInput}')"></i></span>
             `;
         },
 
@@ -156,9 +159,9 @@ let vue = new Vue({
         },
 
         createResume: function () {
-            db.collection('users').doc(`${user.email}`).set(this.resume);
-
-            location.href = 'index.html';
+            db.collection('users').doc(`${user.email}`).set(this.resume).then(() => {
+                location.href = 'index.html';
+            });
         }
     }
 })
@@ -176,11 +179,6 @@ function deleteKeySkill (value) {
     
     vue.resume.keySkills.splice(indexElement, 1);
     htmlElement.parentNode.removeChild(htmlElement);
-}
-
-function salaryNumbersSort() {
-    let salaryInput = document.getElementById('salary-input').value;
-    document.getElementById('salary-input').value = salaryInput.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 }
 
 function deleteWorkplace(index) {

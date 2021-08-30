@@ -22,7 +22,7 @@
 
     <nav class="navbar navbar-light">
         <div class="container-fluid">
-            <a class="navbar-brand text-white" id="title-js" href="#">JS</a>
+            <a class="navbar-brand text-white" id="title-js" href="index.html">JS</a>
 
             <button class="btn" type="button" id="btn-toggle" data-bs-toggle="collapse" data-bs-target="#mobileToogle">
                 <i class="fas fa-bars"></i>
@@ -225,7 +225,41 @@
                     </label>
                 </div>
 
-                <button type="button" class="btn btn-primary" @click="createVacancy">Создать вакансию</button>
+                <div class="col-md-6">
+                    <label for="profArea-input" class="form-label">Проф. область</label>
+                    <select name="professionalArea" v-model="vacancy.profArea" id="professionalAreaSelect" class="form-select">
+                        <option value="Автомобильный бизнес">Автомобильный бизнес</option>
+                        <option value="Административный персонал">Административный персонал</option>
+                        <option value="Банки, инвестиции, лизинг">Банки, инвестиции, лизинг</option>
+                        <option value="Безопасность">Безопасность</option>
+                        <option value="Бухгалтерия, управленческий учет, финансы предприятия">Бухгалтерия, управленческий учет, финансы предприятия</option>
+                        <option value="Высший менеджмент">Высший менеджмент</option>
+                        <option value="Государственная служба, некоммерческие организации">Государственная служба, некоммерческие организации</option>
+                        <option value="Добыча сырья">Добыча сырья</option>
+                        <option value="Домашний персонал">Домашний персонал</option>
+                        <option value="Закупки">Закупки</option>
+                        <option value="Инсталляция и сервис">Инсталляция и сервис</option>
+                        <option value="Информационные технологии, интернет, телеком">Информационные технологии, интернет, телеком</option>
+                        <option value="Искусство, развлечения, масс-медиа">Искусство, развлечения, масс-медиа</option>
+                        <option value="Консультирование">Консультирование</option>
+                        <option value="Маркетинг, реклама, PR">Маркетинг, реклама, PR</option>
+                        <option value="Медицина, фармацевтика">Медицина, фармацевтика</option>
+                        <option value="Наука, образование">Наука, образование</option>
+                        <option value="Начало карьеры, студенты">Начало карьеры, студенты</option>
+                        <option value="Продажи">Продажи</option>
+                        <option value="Производство, сельское хозяйство">Производство, сельское хозяйство</option>
+                        <option value="Рабочий персонал">Рабочий персонал</option>
+                        <option value="Спортивные клубы, фитнес, салоны красоты">Спортивные клубы, фитнес, салоны красоты</option>
+                        <option value="Страхование">Страхование</option>
+                        <option value="Строительство, недвижимость">Строительство, недвижимость</option>
+                        <option value="Транспорт, логистика">Транспорт, логистика</option>
+                        <option value="Туризм, гостиницы, рестораны">Туризм, гостиницы, рестораны</option>
+                        <option value="Управление персоналом, тренинги">Управление персоналом, тренинги</option>
+                        <option value="Юристы">Юристы</option>
+                    </select>
+                </div>
+
+                <button type="button" class="btn btn-primary mt-3" @click="createVacancy">Создать вакансию</button>
                 <span id="info-span" @click="infoCreateVacancy"><i class="fas fa-info-circle" id="info-icon"></i></span>
             </form>
         </div>
