@@ -13,6 +13,7 @@ let vue = new Vue({
 
         vacancy: {
             name: '',
+            creator: JSON.parse(localStorage.getItem('user')).email,
             aboutVacancy: '',
             company: '',
             salary: '',

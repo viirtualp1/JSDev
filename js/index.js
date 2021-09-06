@@ -1,3 +1,5 @@
+let numberResponsesUser;
+
 Vue.component('vacancy', {
     props: ['data'],
     
@@ -6,14 +8,14 @@ Vue.component('vacancy', {
             <div class="card vacancy mb-3">
                 <div class="card-body">
                     <small class="salary-vacancy text-muted">{{ data.salary }} {{ data.currencySalary }}</small>
-                    <h5 class="card-title title-vacancy" @click="openModal(data.id)">{{ data.name }}</h5>
+                    <h5 class="card-title title-vacancy" onclick="openModal(data.id)">{{ data.name }}</h5>
                     
                     <h6 class="card-subtitle mb-2 text-muted">{{ data.possibleRemoteWork === true ? 'Можно работать из дома' : '' }}</h6>
                     <small class="text-muted">{{ data.company }} <i class="fas fa-check-circle text-primary"></i></small>
                     <small class="text-muted d-block">{{ data.city }}</small>
 
                     <p class="card-text">{{ countWords(data.aboutVacancy) <= 30 ? data.aboutVacancy : wordOutput(data.aboutVacancy, 25) }}</p>
-                    <button type="button" class="btn btn-outline-success" @click="response(data, data.id)">Откликнуться</button>
+                    <button type="button" class="btn btn-outline-success" onclick="this.disabled = true;" @click="response(data)">Откликнуться</button>
                 </div>
             </div>
 
@@ -32,7 +34,7 @@ Vue.component('vacancy', {
                             </div>
 
                             <div class="vacancy-actions-btns">
-                                <button class="btn btn-success">Откликнуться</button> 
+                                <button class="btn btn-success" onclick="this.disabled = true;" @click="response(data)">Откликнуться</button> 
                                 <button class="btn btn-warning" title="Добавить в избранное">
                                     <i class="far fa-star vacancy-add-favourite"></i>
                                 </button>
@@ -99,32 +101,51 @@ Vue.component('vacancy', {
 
             return `${output}...`;
         },
+    
+        response: function (data) {
+            if (data.creator === JSON.parse(localStorage.getItem('user')).email) {
+                db.collection('users').doc(data.creator).get().then((doc) => {
+                    numberResponsesUser = doc.data().numberResponses;
+                    numberResponsesUser++;
 
-        openModal: function (id) {
-            let modal = new bootstrap.Modal(document.getElementById(id))
-            modal.show();
-        },
+                    db.collection('users').doc(data.creator).update({
+                        numberResponses: numberResponsesUser
+                    })
+                });
 
-        response: function (data, btn) {
-            this.user.numberResponses += 1;
-            document.getElementById(btn).disabled = true;
+                db.collection('users').doc(data.creator).get().then((doc) => {
+                    let responses = doc.data().responses;
 
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 3000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            });
-            
-            Toast.fire({
-                icon: 'success',
-                title: 'Отклик отправлен!'
-            });
+                    try {
+                        responses.push(data.name);    
+                        
+                        db.collection('users').doc(data.creator).set({
+                            responses: responses
+                        }, { merge: true });
+                    } catch {
+                        db.collection('users').doc(data.creator).set({
+                            responses: [data.name]
+                        }, { merge: true });
+                    }
+                });
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                });
+                
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Отклик отправлен!'
+                });
+            }
         }
     }
 });
@@ -231,7 +252,7 @@ let vue = new Vue({
                     vacancyElem.style.display = "";
                 } else { vacancyElem.style.display = "none"; }
             }
-        }
+        },
     },
 });
 
@@ -252,6 +273,8 @@ db.collection('vacancies').get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
         vue.vacancies.push(doc.data());
     });
+
+    recommendedVacancies();
 }).catch((error) => { console.log(error); });
 
 function signOut() {
@@ -280,6 +303,66 @@ function searchVacancies() {
             vacancyElem.style.display = "";
         } else {
             vacancyElem.style.display = "none";
+        }
+    }
+}
+
+function openModal(id) {
+    let modal = new bootstrap.Modal(document.getElementById(id))
+    modal.show();
+}
+
+function recommendedVacancies() {
+    let vacancyRecommendedDiv = document.getElementById('recommended-for-you-content');
+
+    let careerObjUser = vue.user.careerObj.trim().split(/\s+/),
+        salary = vue.user.salary,
+        keySkills = vue.user.keySkills,
+        profArea = vue.user.professionalArea;
+
+    // careerObj, salary, keySkills, professionalArea
+
+    for (let i = 0; i < vue.vacancies.length; i++) {
+        let vacancyNames = vue.vacancies[i].name.trim().split(/\s+/);
+
+        for (let j = 0; j < careerObjUser.length; j++) {
+            if (careerObjUser[j] === vacancyNames[j]) {
+                vacancyRecommendedDiv.innerHTML += `
+                    <div class="vacancy-recommended">
+                        <i class="fas fa-file-alt" id="open-recommended-vacancy" onclick="openModal(${vue.vacancies[i].id})"></i>
+
+                        <p id="title-recommended-vacancy">${vue.vacancies[i].name}</p>
+                        <small class="text-muted">${vue.vacancies[i].salary} ${vue.vacancies[i].currencySalary}</small> <small class="text-muted">${vue.vacancies[i].company}, ${vue.vacancies[i].city}</small>
+                    </div>
+                `;
+            }
+        }
+
+        for (let ks = 0; ks < keySkills.length; ks++) {
+            for (let ksVacancy = 0; ksVacancy < vue.vacancies[i].keySkills.length; ksVacancy++) {
+                if (keySkills[ks] === vue.vacancies[i].keySkills[ksVacancy]) {
+                    vacancyRecommendedDiv.innerHTML += `
+                        <div class="vacancy-recommended">
+                            <i class="fas fa-file-alt" id="open-recommended-vacancy" onclick="openModal(${vue.vacancies[i].id})"></i>
+
+                            <p id="title-recommended-vacancy">${vue.vacancies[i].name}</p>
+                            <small class="text-muted">${vue.vacancies[i].salary} ${vue.vacancies[i].currencySalary}</small> <small class="text-muted">${vue.vacancies[i].company}, ${vue.vacancies[i].city}</small>
+                        </div>
+                    `;
+                }
+            }
+        }
+
+        if (vue.vacancies.salary >= salary
+            || vue.vacancies[i].professionalArea === profArea) {
+            vacancyRecommendedDiv.innerHTML += `
+                <div class="vacancy-recommended">
+                    <i class="fas fa-file-alt" id="open-recommended-vacancy" onclick="openModal(${vue.vacancies[i].id})"></i>
+
+                    <p id="title-recommended-vacancy">${vue.vacancies[i].name}</p>
+                    <small class="text-muted">${vue.vacancies[i].salary} ${vue.vacancies[i].currencySalary}</small> <small class="text-muted">${vue.vacancies[i].company}, ${vue.vacancies[i].city}</small>
+                </div>
+            `;
         }
     }
 }
