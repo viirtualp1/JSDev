@@ -1,93 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/index.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/index.css" />
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <title>JobSearch - Главная</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="top-nav">
-        <div id="nav-city"></div>
+      <div id="nav-city"></div>
 
-        <div id="nav-all-services" data-bs-toggle="modal" data-bs-target="#all-services-modal">Все сервисы</div>
-        <div id="nav-raise-resume">Автоподнятие резюме</div>
-        <div id="nav-search-work">Поиска работы</div>
+      <div id="nav-all-services" data-bs-toggle="modal" data-bs-target="#all-services-modal">
+        Все сервисы
+      </div>
+      <div id="nav-raise-resume">Автоподнятие резюме</div>
+      <div id="nav-search-work">Поиска работы</div>
     </div>
 
     <nav class="navbar navbar-light">
-        <div class="container-fluid">
-            <a class="navbar-brand text-white" id="title-js" href="#">JS</a>
+      <div class="container-fluid">
+        <a class="navbar-brand text-white" id="title-js" href="#">JS</a>
 
-            <button class="btn" type="button" id="btn-toggle" data-bs-toggle="collapse" data-bs-target="#mobileToogle">
-                <i class="fas fa-bars"></i>
-            </button>
+        <button
+          class="btn"
+          type="button"
+          id="btn-toggle"
+          data-bs-toggle="collapse"
+          data-bs-target="#mobileToogle"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
 
-            <ul class="navbar-nav navbar-nav-scroll" id="ul-nav">
-                <li class="nav-link" data-bs-toggle="collapse" data-bs-target="#search-vacancies-collapse"><i class="fas fa-search"></i></li>
-                <li class="nav-link"><i class="fas fa-bell"></i></li>
-                <li class="nav-link"><i class="fas fa-comment-alt"></i></li>
-                <li class="nav-link" data-bs-toggle="collapse" data-bs-target="#user-info-collapse"><i class="fas fa-user"></i></li>
-            </ul>
+        <ul class="navbar-nav navbar-nav-scroll" id="ul-nav">
+          <li
+            class="nav-link"
+            data-bs-toggle="collapse"
+            data-bs-target="#search-vacancies-collapse"
+          >
+            <i class="fas fa-search"></i>
+          </li>
+          <li class="nav-link"><i class="fas fa-bell"></i></li>
+          <li class="nav-link"><i class="fas fa-comment-alt"></i></li>
+          <li class="nav-link" data-bs-toggle="collapse" data-bs-target="#user-info-collapse">
+            <i class="fas fa-user"></i>
+          </li>
+        </ul>
+      </div>
+
+      <ul class="collapse" id="mobileToogle">
+        <div class="top-nav-mob">
+          <div id="nav-city-mob"></div>
+
+          <div id="nav-all-services-mob">Все сервисы</div>
+          <div id="nav-raise-resume-mob">Автоподнятие резюме</div>
+          <div id="nav-search-work-mob">Поиск работы</div>
         </div>
 
-        <ul class="collapse" id="mobileToogle">
-            <div class="top-nav-mob">
-                <div id="nav-city-mob"></div>
-
-                <div id="nav-all-services-mob">Все сервисы</div>
-                <div id="nav-raise-resume-mob">Автоподнятие резюме</div>
-                <div id="nav-search-work-mob">Поиск работы</div>
-            </div>
-
-            <div class="nav-mob">
-                <li class="nav-link mob" data-bs-toggle="collapse" data-bs-target="#search-vacancies-collapse"><i class="fas fa-search"></i></li>
-                <li class="nav-link mob"><i class="fas fa-bell"></i></li>
-                <li class="nav-link mob"><i class="fas fa-comment-alt"></i></li>
-                <li class="nav-link mob" data-bs-toggle="collapse" data-bs-target="#user-info-collapse"><i class="fas fa-user"></i></li>
-            </div>
-        </ul>
+        <div class="nav-mob">
+          <li
+            class="nav-link mob"
+            data-bs-toggle="collapse"
+            data-bs-target="#search-vacancies-collapse"
+          >
+            <i class="fas fa-search"></i>
+          </li>
+          <li class="nav-link mob"><i class="fas fa-bell"></i></li>
+          <li class="nav-link mob"><i class="fas fa-comment-alt"></i></li>
+          <li class="nav-link mob" data-bs-toggle="collapse" data-bs-target="#user-info-collapse">
+            <i class="fas fa-user"></i>
+          </li>
+        </div>
+      </ul>
     </nav>
 
     <div class="rightCollapses">
-        <div class="collapse" id="user-info-collapse">
-            <div class="card card-body">
-                <img src="" id="avatar-user" class="card-img-top" alt="avatar-user">
-                <div class="card-body">
-                    <h5 class="card-title" id="name-user"></h5>
-                    <p class="card-text" id="email-user"></p>
+      <div class="collapse" id="user-info-collapse">
+        <div class="card card-body">
+          <img src="" id="avatar-user" class="card-img-top" alt="avatar-user" />
+          <div class="card-body">
+            <h5 class="card-title" id="name-user"></h5>
+            <p class="card-text" id="email-user"></p>
 
-                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#resume-user-modal">Мое резюме</button>
-                    <button onclick="signOut()" class="btn btn-outline-danger">Выйти</button>
-                </div>
-            </div>
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#resume-user-modal"
+            >
+              Мое резюме
+            </button>
+            <button onclick="signOut()" class="btn btn-outline-danger">Выйти</button>
+          </div>
         </div>
-        <div class="collapse" id="search-vacancies-collapse">
-            <div class="card card-body">
-                <input type="search" class="form-control" id="search-vacancy-input" placeholder="Поиск вакансий" oninput="searchVacancies()">
-            </div>
-        </div> 
+      </div>
+      <div class="collapse" id="search-vacancies-collapse">
+        <div class="card card-body">
+          <input
+            type="search"
+            class="form-control"
+            id="search-vacancy-input"
+            placeholder="Поиск вакансий"
+            oninput="searchVacancies()"
+          />
+        </div>
+      </div>
     </div>
 
     <div id="app">
-        <div class="container">
-            <div class="row justify-content-md-center">
-                <div class="col col-lg-3">
-                    <div class="info-user">
-                        <p id="text-responses"><i class="fas fa-users" id="icon-responses"></i> Отклики и приглашения <p id="number-responses">{{ user.numberResponses }}</p></p>
-                        <p id="text-views"><i class="fas fa-eye" id="icon-views"></i> Просмотры резюме <p id="number-views">{{ user.numberViews }}</p></p>
-                        <p id="text-favourites"><i class="fas fa-star" id="icon-favourites"></i> Избранные вакансии <p id="number-favourites">{{ user.numberFavourites }}</p></p>
-                    </div>
+    <div class="container">
+        <div class="row justify-content-md-center">
+          <div class="col col-lg-3">
+            <div class="info-user">
+              <p id="text-responses"><i lass="fas fa-users" id="icon-responses"></i> Отклики и приглашения <p id="number-responses">{{ user.numberResponses }}</p></p>
+              <p id="text-views"><i class="fas fa-eye" id="icon-views"></i> Просмотры резюме <p id="number-views">{{ user.numberViews }}</p></p>
+              <p id="text-favourites"><i class="fas fa-star" id="icon-favourites"></i> Избранные вакансии <p id="number-favourites">{{ user.numberFavourites }}</p></p>
+            </div>
 
-                    <div class="recommended-for-you mb-3">
-                        <h4>Рекомендуем лично вам</h4>
+            <div class="recommended-for-you mb-3">
+              <h4>Рекомендуем лично вам</h4>
 
-                        <div id="recommended-for-you-content">
-                            <!-- <div class="vacancy-recommended">
+              <div id="recommended-for-you-content">
+                <div class="vacancy-recommended">
                                 <i class="fas fa-file-alt" id="open-recommended-vacancy"></i>
 
                                 <p id="title-recommended-vacancy">Junior Front-End Javascript разработчик</p>
@@ -106,520 +148,1015 @@
 
                                 <p id="title-recommended-vacancy">Senior Full-Stack разработчик</p>
                                 <small class="text-muted">200 000 руб.</small> <small class="text-muted">VueJS, New York</small>
-                            </div> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 mb-3">
-                    <vacancy :key="index" v-for="(data, index) in vacancies" :data="data">
-                        
-                    </vacancy>
-                </div>
-                <div class="col col-lg-3 mb-3">
-                    <div class="filter-vacancy">
-                        <h5>Ключевые слова</h5>
-                        <form class="mb-3">
-                            <input type="text" v-model="filterVacancies.keyWords" class="form-control" placeholder="Специалист по тестированию">
-                            <small class="text-muted">Например, специалист по тестированию</small>
-                        </form>
-
-                        <div class="proffesionalArea mb-3">
-                            <p class="d-inline profArea-title">Проф. область</p>
-                            <p class="d-inline profArea-current">{{ filterVacancies.profArea }}</p>
-                            <p class="d-inline profArea-choose-other" data-bs-toggle="modal" data-bs-target="#profArea-modal">Указать другую</p>
-                        </div>
-
-                        <h5>Город</h5>
-                        <form class="mb-3">
-                            <input type="text" v-model="filterVacancies.city" class="form-control" placeholder="Москва">
-                        </form>
-
-                        <h5>Уровень дохода</h5>
-                        <form class="mb-3">
-                            <div class="input-group">
-                                <span class="input-group-text" id="basic-addon1">От</span>
-                                <input type="text" class="form-control" v-model="filterVacancies.salary" placeholder="50 000 руб." onblur="salaryNumbersSort()" id="salary-vacancy-input">
-    
-                                <button class="btn btn-outline-secondary dropdown-toggle" id="current-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li @click="currencySelectFilter('руб')"><a class="dropdown-item" href="#">руб</a></li>
-                                    <li @click="currencySelectFilter('EUR')"><a class="dropdown-item" href="#">EUR</a></li>
-                                    <li @click="currencySelectFilter('USD')"><a class="dropdown-item" href="#">USD</a></li>
-                                </ul>
                             </div>
-                        </form>
-
-                        <h5>Опыт работы</h5>
-                        <form class="mb-3">
-                            <div class="form-check">
-                                <input class="form-check-input" v-model="filterVacancies.workExperience" value="Не имеет значения" type="radio" name="workExperience" id="noNeedWorkExperience" checked>
-                                <label class="form-check-label" for="noNeedWorkExperience">
-                                    Не имеет значения
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" v-model="filterVacancies.workExperience" value="Нет опыта" type="radio" name="workExperience" id="noHaveWorkExperience">
-                                <label class="form-check-label" for="noHaveWorkExperience">
-                                    Нет опыта
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" v-model="filterVacancies.workExperience" value="От 1 года до 3 лет" type="radio" name="workExperience" id="oneToThreeWorkExperience">
-                                <label class="form-check-label" for="oneToThreeWorkExperience">
-                                    От 1 года до 3 лет
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" v-model="filterVacancies.workExperience" value="От 3 лет до 6 лет" type="radio" name="workExperience" id="threeToSixWorkExperience">
-                                <label class="form-check-label" for="threeToSixWorkExperience">
-                                    От 3 лет до 6 лет
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" v-model="filterVacancies.workExperience" value="Более 6 лет" type="radio" name="workExperience" id="moreSixWorkExperience">
-                                <label class="form-check-label" for="moreSixWorkExperience">
-                                    Более 6 лет
-                                </label>
-                            </div>
-                        </form>
-
-                        <h5>Тип занятости</h5>
-                        <form class="mb-3">
-                            <div class="form-check">
-                                <input class="form-check-input" v-model="filterVacancies.typeEmployment" value="Полная занятость" type="radio" name="typeEmployment" id="fullEmployment" checked>
-                                <label class="form-check-label" for="fullEmployment">
-                                    Полная занятость
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" v-model="filterVacancies.typeEmployment" value="Частичная занятость" type="radio" name="typeEmployment" id="partTimeEmpoyment">
-                                <label class="form-check-label" for="partTimeEmpoyment">
-                                    Частичная занятость
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" v-model="filterVacancies.typeEmployment" value="Проектная работа / разовое задание" type="radio" name="typeEmployment" id="projectWorkEmpoyment">
-                                <label class="form-check-label" for="projectWorkEmpoyment">
-                                    Проектная работа / разовое задание
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" v-model="filterVacancies.typeEmployment" value="Волонтерство" type="radio" name="typeEmployment" id="volunteeringEmpoyment">
-                                <label class="form-check-label" for="volunteeringEmpoyment">
-                                    Волонтерство
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" v-model="filterVacancies.typeEmployment" value="Стажировка" type="radio" name="typeEmployment" id="internshipEmpoyment">
-                                <label class="form-check-label" for="internshipEmpoyment">
-                                    Стажировка
-                                </label>
-                            </div>
-                        </form>
-
-                        <button class="btn btn-outline-primary" @click="filterVacanciesFunc()">Искать</button>
-                    </div>
-                </div>
+              </div>
             </div>
-        </div>
+          </div>
+          <div class="col-lg-6 mb-3">
+            <vacancy :key="index" v-for="(data, index) in vacancies" :data="data"></vacancy>
+          </div>
+          <div class="col col-lg-3 mb-3">
+            <div class="filter-vacancy">
+              <h5>Ключевые слова</h5>
+              <form class="mb-3">
+                <input
+                  type="text"
+                  v-model="filterVacancies.keyWords"
+                  class="form-control"
+                  placeholder="Специалист по тестированию"
+                />
+                <small class="text-muted">Например, специалист по тестированию</small>
+              </form>
 
-        <div class="modal fade" id="resume-user-modal" tabindex="-1" aria-labelledby="resume-user-modal" aria-hidden="true">
-            <div class="modal-dialog modal-xl">
-                <div class="modal-content">
-                    <h3>Контактные данные</h3>
-                    <form class="row g-3 mb-3">
-                        <div class="col-md-6">
-                            <label for="name-input" class="form-label">Имя</label>
-                            <input type="text" v-model="user.name" class="form-control" id="name-input">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="surname-input" class="form-label">Фамилия</label>
-                            <input type="text" v-model="user.surname" class="form-control" id="surname-input">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="phone-input" class="form-label">Моб. телефон</label>
-                            <input type="text" v-model="user.phone" class="form-control" id="phone-input">
-                        </div>
-                        <div class="col-md-6" id="city-div">
-                            <div class="address">
-                                <div class="field">
-                                    <label for="city-input" class="form-label">Город проживания</label>
-                                    <input type="text" v-model="user.city" class="form-control" id="city-input" name="city">
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-    
-                    <h3>Основаная информация</h3>
-                    <form class="row g-3 mb-3">
-                        <div class="col-md-6">
-                            <label for="date-input" class="form-label">Дата рождения (пример: 01.01.2021)</label>
-                            <input type="text" v-model="user.date" class="form-control" id="date-input" />
-                        </div>
-                        <div class="col-md-6">
-                            <label for="date-input" class="form-label">Пол</label>
-                            <div class="form-check">
-                                <input class="form-check-input" v-model="user.sex" value="Мужской" type="radio" name="sex" id="man">
-                                <label class="form-check-label" for="man">
-                                    Мужской
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" v-model="user.sex" value="Женский" type="radio" name="sex" id="woman">
-                                <label class="form-check-label" for="woman">
-                                    Женский
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="citizenship-input" class="form-label">Гражданство</label>
-                            <input type="text" v-model="user.citizenship" class="form-control" id="citizenship-input" />
-                        </div>
-                        <div class="col-md-6">
-                            <label for="haveExperienceWork" class="form-label">Опыт работы</label>
-                            <div class="form-check">
-                                <input class="form-check-input" v-model="user.experienceWork" value="Есть опыт работы" type="radio" name="experienceWork" id="haveExperienceWork">
-                                <label class="form-check-label" for="haveExperienceWork">
-                                    Есть опыт работы
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" v-model="user.experienceWork" value="Нет опыта работы" type="radio" name="experienceWork" id="noExperienceWork">
-                                <label class="form-check-label" for="noExperienceWork">
-                                    Нет опыта работы
-                                </label>
-                            </div>
-                        </div>
-                    </form>
-    
-                    <h3>Специальность</h3>
-                    <form class="row g-3 mb-3">
-                        <div class="col-md-6">
-                            <label for="career-objective-input" class="form-label">Желаемая должность</label>
-                            <input type="text" v-model="user.careerObj" class="form-control" id="career-objective-input">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="salary-input" class="form-label">Зарплата</label>
-    
-                            <div class="input-group">
-                                <input type="text" v-model="user.salary" class="form-control" onblur="salaryNumbersSort()" id="salary-input">
-    
-                                <button class="btn btn-outline-secondary dropdown-toggle" id="current-currency-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li @click="currencySelect('руб')"><a class="dropdown-item" href="#">руб</a></li>
-                                    <li @click="currencySelect('EUR')"><a class="dropdown-item" href="#">EUR</a></li>
-                                    <li @click="currencySelect('USD')"><a class="dropdown-item" href="#">USD</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="phone-input" class="form-label">Проф. область</label>
-                            <select name="professionalArea" v-model="user.professionalArea" id="professionalAreaSelect" class="form-select">
-                                <option value="Автомобильный бизнес">Автомобильный бизнес</option>
-                                <option value="Административный персонал">Административный персонал</option>
-                                <option value="Банки, инвестиции, лизинг">Банки, инвестиции, лизинг</option>
-                                <option value="Безопасность">Безопасность</option>
-                                <option value="Бухгалтерия, управленческий учет, финансы предприятия">Бухгалтерия, управленческий учет, финансы предприятия</option>
-                                <option value="Высший менеджмент">Высший менеджмент</option>
-                                <option value="Государственная служба, некоммерческие организации">Государственная служба, некоммерческие организации</option>
-                                <option value="Добыча сырья">Добыча сырья</option>
-                                <option value="Домашний персонал">Домашний персонал</option>
-                                <option value="Закупки">Закупки</option>
-                                <option value="Инсталляция и сервис">Инсталляция и сервис</option>
-                                <option value="Информационные технологии, интернет, телеком">Информационные технологии, интернет, телеком</option>
-                                <option value="Искусство, развлечения, масс-медиа">Искусство, развлечения, масс-медиа</option>
-                                <option value="Консультирование">Консультирование</option>
-                                <option value="Маркетинг, реклама, PR">Маркетинг, реклама, PR</option>
-                                <option value="Медицина, фармацевтика">Медицина, фармацевтика</option>
-                                <option value="Наука, образование">Наука, образование</option>
-                                <option value="Начало карьеры, студенты">Начало карьеры, студенты</option>
-                                <option value="Продажи">Продажи</option>
-                                <option value="Производство, сельское хозяйство">Производство, сельское хозяйство</option>
-                                <option value="Рабочий персонал">Рабочий персонал</option>
-                                <option value="Спортивные клубы, фитнес, салоны красоты">Спортивные клубы, фитнес, салоны красоты</option>
-                                <option value="Страхование">Страхование</option>
-                                <option value="Строительство, недвижимость">Строительство, недвижимость</option>
-                                <option value="Транспорт, логистика">Транспорт, логистика</option>
-                                <option value="Туризм, гостиницы, рестораны">Туризм, гостиницы, рестораны</option>
-                                <option value="Управление персоналом, тренинги">Управление персоналом, тренинги</option>
-                                <option value="Юристы">Юристы</option>
-                            </select>
-                        </div>
-                    </form>
-    
-                    <h3>Опыт работы</h3>
-                    <form class="row g-3 mb-3">
-                        <div class="col-md-6">
-                            <div class="work-places">
-                                <button class="btn btn-outline-primary mb-3" type="button" data-bs-toggle="modal" data-bs-target="#addWorkPlace-modal" id="add-place-work-btn">Добавить место работы</button>    
-                                
-                                <div id="workplaces-content">
-                                    <div class="card card-workplace" v-for="workplace in user.workplacesArray" :id="workplace.indexWorkplace" style="width: 18rem;">
-                                        <div class="card-body">
-                                            <a href="#" class="mb-2">{{ workplace.monthStartWork }} {{ workplace.yearStartWork }} - {{ workplace.monthEndWork }} {{ workplace.yearEndWork }}</a>
-                            
-                                            <h5 class="card-title">{{ workplace.position }}</h5>
-                                            <p class="card-text">{{ workplace.nameOrganization }}</p>
-                            
-                                            <button class="btn btn-outline-danger" @click="deleteWorkplace(workplace.indexWorkplace)"><i class="fas fa-trash"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-    
-                            <div class="about-me">
-                                <label for="about-textarea" class="form-label">О себе</label>
-                                <textarea class="form-control mb-3" v-model="user.aboutMe" id="about-textarea"></textarea>
-                            </div>
-                            
-                            <div class="keySkills">
-                                <label for="keySkills-input" class="form-label">Ключевые навыки</label>
-    
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Начните вводите здесь" v-model="keySkillsInput" id="keySkills-input">
-                                    <button class="btn btn-success" type="button" id="add-keySkill-btn" @click="keySkillsAdd()"><i class="fas fa-check"></i></button>
-                                </div>
-    
-                                <div id="keySkills-content">
-                                    <span class="badge keySkill bg-secondary" v-for="keySkill in user.keySkills" :id="keySkill">{{ keySkill }} <i class="fas fa-trash deleteKeySkill" @click="deleteKeySkill(keySkill)"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-    
-                    <h3>Образование</h3>
-                    <form class="row g-3 mb-3">
-                        <div class="col-md-6">
-                            <label for="level-select">Уровень</label>
-                            <select class="form-select mt-2" v-model="user.education" id="level-select">
-                                <option value="Среднее">Среднее</option>
-                                <option value="Среднее специальное">Среднее специальное</option>
-                                <option value="Неоконченное высшее">Неоконченное высшее</option>
-                                <option value="Высшее">Высшее</option>
-                                <option value="Бакалавр">Бакалавр</option>
-                                <option value="Магистр">Магистр</option>
-                                <option value="Кандидат наук">Кандидат наук</option>
-                                <option value="Доктор наук">Доктор наук</option>
-                            </select>
-                        </div>
-                    </form>
-    
-                    <h3>Владение языками</h3>
-                    <form class="row g-3 mb-3">
-                        <div class="col-md-6">
-                            <label for="nativeLanguage-input">Родной язык</label>
-                            <input type="text" class="form-control" v-model="user.nativeLanguage" id="nativeLanguage-input" placeholder="Родной язык">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="foreignLanguages-input">Иностранные языки</label>
-                            <input type="text" class="form-control" v-model="user.foreignLanguages" id="foreignLanguages-input" placeholder="Укажите через запятую">
-                        </div>
-                    </form>
+              <div class="proffesionalArea mb-3">
+                <p class="d-inline profArea-title">Проф. область</p>
+                <p class="d-inline profArea-current">{{ filterVacancies.profArea }}</p>
+                <p
+                  class="d-inline profArea-choose-other"
+                  data-bs-toggle="modal"
+                  data-bs-target="#profArea-modal"
+                >
+                  Указать другую
+                </p>
+              </div>
 
-                    <button class="btn btn-outline-success mb-3" id="update-resume-btn" @click="updateResume()">Обновить резюме</button>
+              <h5>Город</h5>
+              <form class="mb-3">
+                <input
+                  type="text"
+                  v-model="filterVacancies.city"
+                  class="form-control"
+                  placeholder="Москва"
+                />
+              </form>
+
+              <h5>Уровень дохода</h5>
+              <form class="mb-3">
+                <div class="input-group">
+                  <span class="input-group-text" id="basic-addon1">От</span>
+                  <input
+                    type="text"
+                    class="form-control"
+                    v-model="filterVacancies.salary"
+                    placeholder="50 000 руб."
+                    onblur="salaryNumbersSort()"
+                    id="salary-vacancy-input"
+                  />
+
+                  <button
+                    class="btn btn-outline-secondary dropdown-toggle"
+                    id="current-btn"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  ></button>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li @click="currencySelectFilter('руб')">
+                      <a class="dropdown-item" href="#">руб</a>
+                    </li>
+                    <li @click="currencySelectFilter('EUR')">
+                      <a class="dropdown-item" href="#">EUR</a>
+                    </li>
+                    <li @click="currencySelectFilter('USD')">
+                      <a class="dropdown-item" href="#">USD</a>
+                    </li>
+                  </ul>
                 </div>
+              </form>
+
+              <h5>Опыт работы</h5>
+              <form class="mb-3">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    v-model="filterVacancies.workExperience"
+                    value="Не имеет значения"
+                    type="radio"
+                    name="workExperience"
+                    id="noNeedWorkExperience"
+                    checked
+                  />
+                  <label class="form-check-label" for="noNeedWorkExperience">
+                    Не имеет значения
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    v-model="filterVacancies.workExperience"
+                    value="Нет опыта"
+                    type="radio"
+                    name="workExperience"
+                    id="noHaveWorkExperience"
+                  />
+                  <label class="form-check-label" for="noHaveWorkExperience"> Нет опыта </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    v-model="filterVacancies.workExperience"
+                    value="От 1 года до 3 лет"
+                    type="radio"
+                    name="workExperience"
+                    id="oneToThreeWorkExperience"
+                  />
+                  <label class="form-check-label" for="oneToThreeWorkExperience">
+                    От 1 года до 3 лет
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    v-model="filterVacancies.workExperience"
+                    value="От 3 лет до 6 лет"
+                    type="radio"
+                    name="workExperience"
+                    id="threeToSixWorkExperience"
+                  />
+                  <label class="form-check-label" for="threeToSixWorkExperience">
+                    От 3 лет до 6 лет
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    v-model="filterVacancies.workExperience"
+                    value="Более 6 лет"
+                    type="radio"
+                    name="workExperience"
+                    id="moreSixWorkExperience"
+                  />
+                  <label class="form-check-label" for="moreSixWorkExperience"> Более 6 лет </label>
+                </div>
+              </form>
+
+              <h5>Тип занятости</h5>
+              <form class="mb-3">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    v-model="filterVacancies.typeEmployment"
+                    value="Полная занятость"
+                    type="radio"
+                    name="typeEmployment"
+                    id="fullEmployment"
+                    checked
+                  />
+                  <label class="form-check-label" for="fullEmployment"> Полная занятость </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    v-model="filterVacancies.typeEmployment"
+                    value="Частичная занятость"
+                    type="radio"
+                    name="typeEmployment"
+                    id="partTimeEmpoyment"
+                  />
+                  <label class="form-check-label" for="partTimeEmpoyment">
+                    Частичная занятость
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    v-model="filterVacancies.typeEmployment"
+                    value="Проектная работа / разовое задание"
+                    type="radio"
+                    name="typeEmployment"
+                    id="projectWorkEmpoyment"
+                  />
+                  <label class="form-check-label" for="projectWorkEmpoyment">
+                    Проектная работа / разовое задание
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    v-model="filterVacancies.typeEmployment"
+                    value="Волонтерство"
+                    type="radio"
+                    name="typeEmployment"
+                    id="volunteeringEmpoyment"
+                  />
+                  <label class="form-check-label" for="volunteeringEmpoyment"> Волонтерство </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    v-model="filterVacancies.typeEmployment"
+                    value="Стажировка"
+                    type="radio"
+                    name="typeEmployment"
+                    id="internshipEmpoyment"
+                  />
+                  <label class="form-check-label" for="internshipEmpoyment"> Стажировка </label>
+                </div>
+              </form>
+
+              <button class="btn btn-outline-primary" @click="filterVacanciesFunc()">Искать</button>
             </div>
+          </div>
         </div>
+        </div>
+      </div>
 
-        <div class="modal fade" id="addWorkPlace-modal" tabindex="-1" aria-labelledby="addWorkPlace-modal" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered ">
-              <div class="modal-content">
-                    <form class="m-auto text-center">
-                        <h4 class="mt-3">Добавить место работы</h4>
-    
-                        <p class="fw-bold">Начало работы</p>
-                        <div class="input-group mb-3">
-                            <select class="form-select" v-model="workplaces[0].monthStart" id="month-start-work">
-                                <option value="Январь">Январь</option>
-                                <option value="Февраль">Февраль</option>
-                                <option value="Март">Март</option>
-                                <option value="Апрель">Апрель</option>
-                                <option value="Май">Май</option>
-                                <option value="Июнь">Июнь</option>
-                                <option value="Июль">Июль</option>
-                                <option value="Август">Август</option>
-                                <option value="Сентябрь">Сентябрь</option>
-                                <option value="Октябрь">Октябрь</option>
-                                <option value="Ноябрь">Ноябрь</option>
-                                <option value="Декабрь">Декабрь</option>
-                            </select>
-                            <input class="form-control" v-model="workplaces[0].yearStart" type="number" id="year-start-work">
-                        </div>
-    
-                        <p class="fw-bold">Окончание работы</p>
-                        <div class="input-group mb-3">
-                            <select class="form-select" v-model="workplaces[0].monthEnd" id="month-end-work">
-                                <option value="Январь">Январь</option>
-                                <option value="Февраль">Февраль</option>
-                                <option value="Март">Март</option>
-                                <option value="Апрель">Апрель</option>
-                                <option value="Май">Май</option>
-                                <option value="Июнь">Июнь</option>
-                                <option value="Июль">Июль</option>
-                                <option value="Август">Август</option>
-                                <option value="Сентябрь">Сентябрь</option>
-                                <option value="Октябрь">Октябрь</option>
-                                <option value="Ноябрь">Ноябрь</option>
-                                <option value="Декабрь">Декабрь</option>
-                            </select>
-                            <input class="form-control" v-model="workplaces[0].yearEnd" type="number" id="year-end-work">
-                         </div>
-    
-                        <p class="fw-bold">Организация</p>
-                        <input type="text" class="form-control mb-3" v-model="workplaces[0].nameOrganization" id="name-organization-input" placeholder="Название организации">
-    
-                        <p class="fw-bold">Должность</p>
-                        <input type="text" class="form-control mb-3" v-model="workplaces[0].position" id="position-input" placeholder="Должность">
-                        
-                        <p class="fw-bold">Обязанности на рабочем месте</p>
-                        <textarea class="form-control mb-3" v-model="workplaces[0].responsibilities" id="workplaceResponsibilities-textarea"></textarea>
-    
-                        <button type="button" class="btn btn-success mb-3" @click="addWorkPlace()">Добавить</button>
-                    </form>
+      <div
+        class="modal fade"
+        id="resume-user-modal"
+        tabindex="-1"
+        aria-labelledby="resume-user-modal"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <h3>Контактные данные</h3>
+            <form class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label for="name-input" class="form-label">Имя</label>
+                <input type="text" v-model="user.name" class="form-control" id="name-input" />
+              </div>
+              <div class="col-md-6">
+                <label for="surname-input" class="form-label">Фамилия</label>
+                <input type="text" v-model="user.surname" class="form-control" id="surname-input" />
+              </div>
+              <div class="col-md-6">
+                <label for="phone-input" class="form-label">Моб. телефон</label>
+                <input type="text" v-model="user.phone" class="form-control" id="phone-input" />
+              </div>
+              <div class="col-md-6" id="city-div">
+                <div class="address">
+                  <div class="field">
+                    <label for="city-input" class="form-label">Город проживания</label>
+                    <input
+                      type="text"
+                      v-model="user.city"
+                      class="form-control"
+                      id="city-input"
+                      name="city"
+                    />
+                  </div>
                 </div>
+              </div>
+            </form>
+
+            <h3>Основаная информация</h3>
+            <form class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label for="date-input" class="form-label"
+                  >Дата рождения (пример: 01.01.2021)</label
+                >
+                <input type="text" v-model="user.date" class="form-control" id="date-input" />
+              </div>
+              <div class="col-md-6">
+                <label for="date-input" class="form-label">Пол</label>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    v-model="user.sex"
+                    value="Мужской"
+                    type="radio"
+                    name="sex"
+                    id="man"
+                  />
+                  <label class="form-check-label" for="man"> Мужской </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    v-model="user.sex"
+                    value="Женский"
+                    type="radio"
+                    name="sex"
+                    id="woman"
+                  />
+                  <label class="form-check-label" for="woman"> Женский </label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="citizenship-input" class="form-label">Гражданство</label>
+                <input
+                  type="text"
+                  v-model="user.citizenship"
+                  class="form-control"
+                  id="citizenship-input"
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="haveExperienceWork" class="form-label">Опыт работы</label>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    v-model="user.experienceWork"
+                    value="Есть опыт работы"
+                    type="radio"
+                    name="experienceWork"
+                    id="haveExperienceWork"
+                  />
+                  <label class="form-check-label" for="haveExperienceWork">
+                    Есть опыт работы
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    v-model="user.experienceWork"
+                    value="Нет опыта работы"
+                    type="radio"
+                    name="experienceWork"
+                    id="noExperienceWork"
+                  />
+                  <label class="form-check-label" for="noExperienceWork"> Нет опыта работы </label>
+                </div>
+              </div>
+            </form>
+
+            <h3>Специальность</h3>
+            <form class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label for="career-objective-input" class="form-label">Желаемая должность</label>
+                <input
+                  type="text"
+                  v-model="user.careerObj"
+                  class="form-control"
+                  id="career-objective-input"
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="salary-input" class="form-label">Зарплата</label>
+
+                <div class="input-group">
+                  <input
+                    type="text"
+                    v-model="user.salary"
+                    class="form-control"
+                    onblur="salaryNumbersSort()"
+                    id="salary-input"
+                  />
+
+                  <button
+                    class="btn btn-outline-secondary dropdown-toggle"
+                    id="current-currency-btn"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  ></button>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li @click="currencySelect('руб')">
+                      <a class="dropdown-item" href="#">руб</a>
+                    </li>
+                    <li @click="currencySelect('EUR')">
+                      <a class="dropdown-item" href="#">EUR</a>
+                    </li>
+                    <li @click="currencySelect('USD')">
+                      <a class="dropdown-item" href="#">USD</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="phone-input" class="form-label">Проф. область</label>
+                <select
+                  name="professionalArea"
+                  v-model="user.professionalArea"
+                  id="professionalAreaSelect"
+                  class="form-select"
+                >
+                  <option value="Автомобильный бизнес">Автомобильный бизнес</option>
+                  <option value="Административный персонал">Административный персонал</option>
+                  <option value="Банки, инвестиции, лизинг">Банки, инвестиции, лизинг</option>
+                  <option value="Безопасность">Безопасность</option>
+                  <option value="Бухгалтерия, управленческий учет, финансы предприятия">
+                    Бухгалтерия, управленческий учет, финансы предприятия
+                  </option>
+                  <option value="Высший менеджмент">Высший менеджмент</option>
+                  <option value="Государственная служба, некоммерческие организации">
+                    Государственная служба, некоммерческие организации
+                  </option>
+                  <option value="Добыча сырья">Добыча сырья</option>
+                  <option value="Домашний персонал">Домашний персонал</option>
+                  <option value="Закупки">Закупки</option>
+                  <option value="Инсталляция и сервис">Инсталляция и сервис</option>
+                  <option value="Информационные технологии, интернет, телеком">
+                    Информационные технологии, интернет, телеком
+                  </option>
+                  <option value="Искусство, развлечения, масс-медиа">
+                    Искусство, развлечения, масс-медиа
+                  </option>
+                  <option value="Консультирование">Консультирование</option>
+                  <option value="Маркетинг, реклама, PR">Маркетинг, реклама, PR</option>
+                  <option value="Медицина, фармацевтика">Медицина, фармацевтика</option>
+                  <option value="Наука, образование">Наука, образование</option>
+                  <option value="Начало карьеры, студенты">Начало карьеры, студенты</option>
+                  <option value="Продажи">Продажи</option>
+                  <option value="Производство, сельское хозяйство">
+                    Производство, сельское хозяйство
+                  </option>
+                  <option value="Рабочий персонал">Рабочий персонал</option>
+                  <option value="Спортивные клубы, фитнес, салоны красоты">
+                    Спортивные клубы, фитнес, салоны красоты
+                  </option>
+                  <option value="Страхование">Страхование</option>
+                  <option value="Строительство, недвижимость">Строительство, недвижимость</option>
+                  <option value="Транспорт, логистика">Транспорт, логистика</option>
+                  <option value="Туризм, гостиницы, рестораны">Туризм, гостиницы, рестораны</option>
+                  <option value="Управление персоналом, тренинги">
+                    Управление персоналом, тренинги
+                  </option>
+                  <option value="Юристы">Юристы</option>
+                </select>
+              </div>
+            </form>
+
+            <h3>Опыт работы</h3>
+            <form class="row g-3 mb-3">
+              <div class="col-md-6">
+                <div class="work-places">
+                  <button
+                    class="btn btn-outline-primary mb-3"
+                    type="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#addWorkPlace-modal"
+                    id="add-place-work-btn"
+                  >
+                    Добавить место работы
+                  </button>
+
+                  <div id="workplaces-content">
+                    <div
+                      class="card card-workplace"
+                      v-for="workplace in user.workplacesArray"
+                      :id="workplace.indexWorkplace"
+                      style="width: 18rem"
+                    >
+                      <div class="card-body">
+                        <a href="#" class="mb-2"
+                          >{{ workplace.monthStartWork }} {{ workplace.yearStartWork }} - {{
+                          workplace.monthEndWork }} {{ workplace.yearEndWork }}</a
+                        >
+
+                        <h5 class="card-title">{{ workplace.position }}</h5>
+                        <p class="card-text">{{ workplace.nameOrganization }}</p>
+
+                        <button
+                          class="btn btn-outline-danger"
+                          @click="deleteWorkplace(workplace.indexWorkplace)"
+                        >
+                          <i class="fas fa-trash"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="about-me">
+                  <label for="about-textarea" class="form-label">О себе</label>
+                  <textarea
+                    class="form-control mb-3"
+                    v-model="user.aboutMe"
+                    id="about-textarea"
+                  ></textarea>
+                </div>
+
+                <div class="keySkills">
+                  <label for="keySkills-input" class="form-label">Ключевые навыки</label>
+
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Начните вводите здесь"
+                      v-model="keySkillsInput"
+                      id="keySkills-input"
+                    />
+                    <button
+                      class="btn btn-success"
+                      type="button"
+                      id="add-keySkill-btn"
+                      @click="keySkillsAdd()"
+                    >
+                      <i class="fas fa-check"></i>
+                    </button>
+                  </div>
+
+                  <div id="keySkills-content">
+                    <span
+                      class="badge keySkill bg-secondary"
+                      v-for="keySkill in user.keySkills"
+                      :id="keySkill"
+                      >{{ keySkill }}
+                      <i class="fas fa-trash deleteKeySkill" @click="deleteKeySkill(keySkill)"></i
+                    ></span>
+                  </div>
+                </div>
+              </div>
+            </form>
+
+            <h3>Образование</h3>
+            <form class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label for="level-select">Уровень</label>
+                <select class="form-select mt-2" v-model="user.education" id="level-select">
+                  <option value="Среднее">Среднее</option>
+                  <option value="Среднее специальное">Среднее специальное</option>
+                  <option value="Неоконченное высшее">Неоконченное высшее</option>
+                  <option value="Высшее">Высшее</option>
+                  <option value="Бакалавр">Бакалавр</option>
+                  <option value="Магистр">Магистр</option>
+                  <option value="Кандидат наук">Кандидат наук</option>
+                  <option value="Доктор наук">Доктор наук</option>
+                </select>
+              </div>
+            </form>
+
+            <h3>Владение языками</h3>
+            <form class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label for="nativeLanguage-input">Родной язык</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  v-model="user.nativeLanguage"
+                  id="nativeLanguage-input"
+                  placeholder="Родной язык"
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="foreignLanguages-input">Иностранные языки</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  v-model="user.foreignLanguages"
+                  id="foreignLanguages-input"
+                  placeholder="Укажите через запятую"
+                />
+              </div>
+            </form>
+
+            <button
+              class="btn btn-outline-success mb-3"
+              id="update-resume-btn"
+              @click="updateResume()"
+            >
+              Обновить резюме
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="modal fade"
+        id="addWorkPlace-modal"
+        tabindex="-1"
+        aria-labelledby="addWorkPlace-modal"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <form class="m-auto text-center">
+              <h4 class="mt-3">Добавить место работы</h4>
+
+              <p class="fw-bold">Начало работы</p>
+              <div class="input-group mb-3">
+                <select
+                  class="form-select"
+                  v-model="workplaces[0].monthStart"
+                  id="month-start-work"
+                >
+                  <option value="Январь">Январь</option>
+                  <option value="Февраль">Февраль</option>
+                  <option value="Март">Март</option>
+                  <option value="Апрель">Апрель</option>
+                  <option value="Май">Май</option>
+                  <option value="Июнь">Июнь</option>
+                  <option value="Июль">Июль</option>
+                  <option value="Август">Август</option>
+                  <option value="Сентябрь">Сентябрь</option>
+                  <option value="Октябрь">Октябрь</option>
+                  <option value="Ноябрь">Ноябрь</option>
+                  <option value="Декабрь">Декабрь</option>
+                </select>
+                <input
+                  class="form-control"
+                  v-model="workplaces[0].yearStart"
+                  type="number"
+                  id="year-start-work"
+                />
+              </div>
+
+              <p class="fw-bold">Окончание работы</p>
+              <div class="input-group mb-3">
+                <select class="form-select" v-model="workplaces[0].monthEnd" id="month-end-work">
+                  <option value="Январь">Январь</option>
+                  <option value="Февраль">Февраль</option>
+                  <option value="Март">Март</option>
+                  <option value="Апрель">Апрель</option>
+                  <option value="Май">Май</option>
+                  <option value="Июнь">Июнь</option>
+                  <option value="Июль">Июль</option>
+                  <option value="Август">Август</option>
+                  <option value="Сентябрь">Сентябрь</option>
+                  <option value="Октябрь">Октябрь</option>
+                  <option value="Ноябрь">Ноябрь</option>
+                  <option value="Декабрь">Декабрь</option>
+                </select>
+                <input
+                  class="form-control"
+                  v-model="workplaces[0].yearEnd"
+                  type="number"
+                  id="year-end-work"
+                />
+              </div>
+
+              <p class="fw-bold">Организация</p>
+              <input
+                type="text"
+                class="form-control mb-3"
+                v-model="workplaces[0].nameOrganization"
+                id="name-organization-input"
+                placeholder="Название организации"
+              />
+
+              <p class="fw-bold">Должность</p>
+              <input
+                type="text"
+                class="form-control mb-3"
+                v-model="workplaces[0].position"
+                id="position-input"
+                placeholder="Должность"
+              />
+
+              <p class="fw-bold">Обязанности на рабочем месте</p>
+              <textarea
+                class="form-control mb-3"
+                v-model="workplaces[0].responsibilities"
+                id="workplaceResponsibilities-textarea"
+              ></textarea>
+
+              <button type="button" class="btn btn-success mb-3" @click="addWorkPlace()">
+                Добавить
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="all-services-modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <a class="nav-link" href="createVacancy.html">Создать вакансию</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="profArea-modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <label for="profArea-input" class="form-label">Проф. область</label>
+
+            <div class="form-check">
+              <input
+                type="radio"
+                id="Любая"
+                class="form-check-input"
+                v-model="filterVacancies.profArea"
+                value="Любая"
+              />
+              <label class="form-check-label" for="Любая">Любая</label>
             </div>
-        </div>
-
-        <div class="modal fade" id="all-services-modal" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered ">
-                <div class="modal-content">
-                    <a class="nav-link" href="createVacancy.html">Создать вакансию</a>
-                </div>
+            <div class="form-check">
+              <input
+                type="radio"
+                id="Автомобильный бизнес"
+                class="form-check-input"
+                v-model="filterVacancies.profArea"
+                value="Автомобильный бизнес"
+              />
+              <label class="form-check-label" for="Автомобильный бизнес"
+                >Автомобильный бизнес</label
+              >
             </div>
+            <div class="form-check">
+              <input
+                type="radio"
+                id="Административный персонал"
+                class="form-check-input"
+                v-model="filterVacancies.profArea"
+                value="Административный персонал"
+              />
+              <label class="form-check-label" for="Административный персонал"
+                >Административный персонал</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                type="radio"
+                id="Банки, инвестиции, лизинг"
+                class="form-check-input"
+                v-model="filterVacancies.profArea"
+                value="Банки, инвестиции, лизинг"
+              />
+              <label class="form-check-label" for="Банки, инвестиции, лизинг"
+                >Банки, инвестиции, лизинг</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                type="radio"
+                id="Безопасность"
+                class="form-check-input"
+                v-model="filterVacancies.profArea"
+                value="Безопасность"
+              />
+              <label class="form-check-label" for="Безопасность">Безопасность</label>
+            </div>
+            <div class="form-check">
+              <input
+                type="radio"
+                id="Бухгалтерия, управленческий учет, финансы предприятия"
+                class="form-check-input"
+                v-model="filterVacancies.profArea"
+                value="Бухгалтерия, управленческий учет, финансы предприятия"
+              />
+              <label
+                class="form-check-label"
+                for="Бухгалтерия, управленческий учет, финансы предприятия"
+                >Бухгалтерия, управленческий учет, финансы предприятия</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                type="radio"
+                id="Высший менеджмент"
+                class="form-check-input"
+                v-model="filterVacancies.profArea"
+                value="Высший менеджмент"
+              />
+              <label class="form-check-label" for="Высший менеджмент">Высший менеджмент</label>
+            </div>
+            <div class="form-check">
+              <input
+                type="radio"
+                id="Государственная служба, некоммерческие организации"
+                class="form-check-input"
+                v-model="filterVacancies.profArea"
+                value="Государственная служба, некоммерческие организации"
+              />
+              <label
+                class="form-check-label"
+                for="Государственная служба, некоммерческие организации"
+                >Государственная служба, некоммерческие организации</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                type="radio"
+                id="Добыча сырья"
+                class="form-check-input"
+                v-model="filterVacancies.profArea"
+                value="Добыча сырья"
+              />
+              <label class="form-check-label" for="Добыча сырья">Добыча сырья</label>
+            </div>
+            <div class="form-check">
+              <input
+                type="radio"
+                id="Домашний персонал"
+                class="form-check-input"
+                v-model="filterVacancies.profArea"
+                value="Домашний персонал"
+              />
+              <label class="form-check-label" for="Домашний персонал">Домашний персонал</label>
+            </div>
+            <div class="form-check">
+              <input
+                type="radio"
+                id="Закупки"
+                class="form-check-input"
+                v-model="filterVacancies.profArea"
+                value="Закупки"
+              />
+              <label class="form-check-label" for="Закупки">Закупки</label>
+            </div>
+            <div class="form-check">
+              <input
+                type="radio"
+                id="Инсталляция и сервис"
+                class="form-check-input"
+                v-model="filterVacancies.profArea"
+                value="Инсталляция и сервис"
+              />
+              <label class="form-check-label" for="Инсталляция и сервис"
+                >Инсталляция и сервис</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                type="radio"
+                id="Информационные технологии, интернет, телеком"
+                class="form-check-input"
+                v-model="filterVacancies.profArea"
+                value="Информационные технологии, интернет, телеком"
+              />
+              <label class="form-check-label" for="Информационные технологии, интернет, телеком"
+                >Информационные технологии, интернет, телеком</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                type="radio"
+                id="Искусство, развлечения, масс-медиа"
+                class="form-check-input"
+                v-model="filterVacancies.profArea"
+                value="Искусство, развлечения, масс-медиа"
+              />
+              <label class="form-check-label" for="Искусство, развлечения, масс-медиа"
+                >Искусство, развлечения, масс-медиа</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                type="radio"
+                id="Консультирование"
+                class="form-check-input"
+                v-model="filterVacancies.profArea"
+                value="Консультирование"
+              />
+              <label class="form-check-label" for="Консультирование">Консультирование</label>
+            </div>
+            <div class="form-check">
+              <input
+                type="radio"
+                id="Маркетинг, реклама, PR"
+                class="form-check-input"
+                v-model="filterVacancies.profArea"
+                value="Маркетинг, реклама, PR"
+              />
+              <label class="form-check-label" for="Маркетинг, реклама, PR"
+                >Маркетинг, реклама, PR</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                type="radio"
+                id="Медицина, фармацевтика"
+                class="form-check-input"
+                v-model="filterVacancies.profArea"
+                value="Медицина, фармацевтика"
+              />
+              <label class="form-check-label" for="Медицина, фармацевтика"
+                >Медицина, фармацевтика</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                type="radio"
+                id="Наука, образование"
+                class="form-check-input"
+                v-model="filterVacancies.profArea"
+                value="Наука, образование"
+              />
+              <label class="form-check-label" for="Наука, образование">Наука, образование</label>
+            </div>
+            <div class="form-check">
+              <input
+                type="radio"
+                id="Начало карьеры, студенты"
+                class="form-check-input"
+                v-model="filterVacancies.profArea"
+                value="Начало карьеры, студенты"
+              />
+              <label class="form-check-label" for="Начало карьеры, студенты"
+                >Начало карьеры, студенты</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                type="radio"
+                id="Продажи"
+                class="form-check-input"
+                v-model="filterVacancies.profArea"
+                value="Продажи"
+              />Продажи
+              <label class="form-check-label" for="Продажи">Продажи</label>
+            </div>
+            <div class="form-check">
+              <input
+                type="radio"
+                id="Производство, сельское хозяйство"
+                class="form-check-input"
+                v-model="filterVacancies.profArea"
+                value="Производство, сельское хозяйство"
+              />
+              <label class="form-check-label" for="Производство, сельское хозяйство"
+                >Производство, сельское хозяйство</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                type="radio"
+                id="Рабочий персонал"
+                class="form-check-input"
+                v-model="filterVacancies.profArea"
+                value="Рабочий персонал"
+              />
+              <label class="form-check-label" for="Рабочий персонал">Рабочий персонал</label>
+            </div>
+            <div class="form-check">
+              <input
+                type="radio"
+                id="Спортивные клубы, фитнес, салоны красоты"
+                class="form-check-input"
+                v-model="filterVacancies.profArea"
+                value="Спортивные клубы, фитнес, салоны красоты"
+              />
+              <label class="form-check-label" for="Спортивные клубы, фитнес, салоны красоты"
+                >Спортивные клубы, фитнес, салоны красоты</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                type="radio"
+                id="Страхование"
+                class="form-check-input"
+                v-model="filterVacancies.profArea"
+                value="Страхование"
+              />
+              <label class="form-check-label" for="Страхование">Страхование</label>
+            </div>
+            <div class="form-check">
+              <input
+                type="radio"
+                id="Строительство, недвижимость"
+                class="form-check-input"
+                v-model="filterVacancies.profArea"
+                value="Строительство, недвижимость"
+              />
+              <label class="form-check-label" for="Строительство, недвижимость"
+                >Строительство, недвижимость</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                type="radio"
+                id="Транспорт, логистика"
+                class="form-check-input"
+                v-model="filterVacancies.profArea"
+                value="Транспорт, логистика"
+              />
+              <label class="form-check-label" for="Транспорт, логистика"
+                >Транспорт, логистика</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                type="radio"
+                id="Туризм, гостиницы, рестораны"
+                class="form-check-input"
+                v-model="filterVacancies.profArea"
+                value="Туризм, гостиницы, рестораны"
+              />
+              <label class="form-check-label" for="Туризм, гостиницы, рестораны"
+                >Туризм, гостиницы, рестораны</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                type="radio"
+                id="Управление персоналом, тренинги"
+                class="form-check-input"
+                v-model="filterVacancies.profArea"
+                value="Управление персоналом, тренинги"
+              />
+              <label class="form-check-label" for="Управление персоналом, тренинги"
+                >Управление персоналом, тренинги</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                type="radio"
+                id="Юристы"
+                class="form-check-input"
+                v-model="filterVacancies.profArea"
+                value="Юристы"
+              />
+              <label class="form-check-label" for="Юристы">Юристы</label>
+            </div>
+
+            <button class="btn btn-outline-danger mt-3" data-bs-dismiss="modal">Закрыть</button>
+          </div>
         </div>
-
-        <div class="modal fade" id="profArea-modal" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <label for="profArea-input" class="form-label">Проф. область</label>
-
-                    <div class="form-check">
-                        <input type="radio" id="Любая" class="form-check-input" v-model="filterVacancies.profArea" value="Любая"></input>
-                        <label class="form-check-label" for="Любая">Любая</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" id="Автомобильный бизнес" class="form-check-input" v-model="filterVacancies.profArea" value="Автомобильный бизнес"></input>
-                        <label class="form-check-label" for="Автомобильный бизнес">Автомобильный бизнес</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" id="Административный персонал" class="form-check-input" v-model="filterVacancies.profArea" value="Административный персонал"></input>
-                        <label class="form-check-label" for="Административный персонал">Административный персонал</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" id="Банки, инвестиции, лизинг" class="form-check-input" v-model="filterVacancies.profArea" value="Банки, инвестиции, лизинг"></input>
-                        <label class="form-check-label" for="Банки, инвестиции, лизинг">Банки, инвестиции, лизинг</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" id="Безопасность" class="form-check-input" v-model="filterVacancies.profArea" value="Безопасность"></input>
-                        <label class="form-check-label" for="Безопасность">Безопасность</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" id="Бухгалтерия, управленческий учет, финансы предприятия" class="form-check-input" v-model="filterVacancies.profArea" value="Бухгалтерия, управленческий учет, финансы предприятия"></input>
-                        <label class="form-check-label" for="Бухгалтерия, управленческий учет, финансы предприятия">Бухгалтерия, управленческий учет, финансы предприятия</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" id="Высший менеджмент" class="form-check-input" v-model="filterVacancies.profArea" value="Высший менеджмент"></input>
-                        <label class="form-check-label" for="Высший менеджмент">Высший менеджмент</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" id="Государственная служба, некоммерческие организации" class="form-check-input" v-model="filterVacancies.profArea" value="Государственная служба, некоммерческие организации"></input>
-                        <label class="form-check-label" for="Государственная служба, некоммерческие организации">Государственная служба, некоммерческие организации</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" id="Добыча сырья" class="form-check-input" v-model="filterVacancies.profArea" value="Добыча сырья"></input>
-                        <label class="form-check-label" for="Добыча сырья">Добыча сырья</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" id="Домашний персонал" class="form-check-input" v-model="filterVacancies.profArea" value="Домашний персонал"></input>
-                        <label class="form-check-label" for="Домашний персонал">Домашний персонал</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" id="Закупки" class="form-check-input" v-model="filterVacancies.profArea" value="Закупки"></input>
-                        <label class="form-check-label" for="Закупки">Закупки</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" id="Инсталляция и сервис" class="form-check-input" v-model="filterVacancies.profArea" value="Инсталляция и сервис"></input>
-                        <label class="form-check-label" for="Инсталляция и сервис">Инсталляция и сервис</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" id="Информационные технологии, интернет, телеком" class="form-check-input" v-model="filterVacancies.profArea" value="Информационные технологии, интернет, телеком"></input>
-                        <label class="form-check-label" for="Информационные технологии, интернет, телеком">Информационные технологии, интернет, телеком</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" id="Искусство, развлечения, масс-медиа" class="form-check-input" v-model="filterVacancies.profArea" value="Искусство, развлечения, масс-медиа"></input>
-                        <label class="form-check-label" for="Искусство, развлечения, масс-медиа">Искусство, развлечения, масс-медиа</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" id="Консультирование" class="form-check-input" v-model="filterVacancies.profArea" value="Консультирование"></input>
-                        <label class="form-check-label" for="Консультирование">Консультирование</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" id="Маркетинг, реклама, PR" class="form-check-input" v-model="filterVacancies.profArea" value="Маркетинг, реклама, PR"></input>
-                        <label class="form-check-label" for="Маркетинг, реклама, PR">Маркетинг, реклама, PR</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" id="Медицина, фармацевтика" class="form-check-input" v-model="filterVacancies.profArea" value="Медицина, фармацевтика"></input>
-                        <label class="form-check-label" for="Медицина, фармацевтика">Медицина, фармацевтика</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" id="Наука, образование" class="form-check-input" v-model="filterVacancies.profArea" value="Наука, образование"></input>
-                        <label class="form-check-label" for="Наука, образование">Наука, образование</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" id="Начало карьеры, студенты" class="form-check-input" v-model="filterVacancies.profArea" value="Начало карьеры, студенты"></input>
-                        <label class="form-check-label" for="Начало карьеры, студенты">Начало карьеры, студенты</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" id="Продажи" class="form-check-input" v-model="filterVacancies.profArea" value="Продажи">Продажи</input>
-                        <label class="form-check-label" for="Продажи">Продажи</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" id="Производство, сельское хозяйство" class="form-check-input" v-model="filterVacancies.profArea" value="Производство, сельское хозяйство"></input>
-                        <label class="form-check-label" for="Производство, сельское хозяйство">Производство, сельское хозяйство</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" id="Рабочий персонал" class="form-check-input" v-model="filterVacancies.profArea" value="Рабочий персонал"></input>
-                        <label class="form-check-label" for="Рабочий персонал">Рабочий персонал</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" id="Спортивные клубы, фитнес, салоны красоты" class="form-check-input" v-model="filterVacancies.profArea" value="Спортивные клубы, фитнес, салоны красоты"></input>
-                        <label class="form-check-label" for="Спортивные клубы, фитнес, салоны красоты">Спортивные клубы, фитнес, салоны красоты</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" id="Страхование" class="form-check-input" v-model="filterVacancies.profArea" value="Страхование"></input>
-                        <label class="form-check-label" for="Страхование">Страхование</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" id="Строительство, недвижимость" class="form-check-input" v-model="filterVacancies.profArea" value="Строительство, недвижимость"></input>
-                        <label class="form-check-label" for="Строительство, недвижимость">Строительство, недвижимость</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" id="Транспорт, логистика" class="form-check-input" v-model="filterVacancies.profArea" value="Транспорт, логистика"></input>
-                        <label class="form-check-label" for="Транспорт, логистика">Транспорт, логистика</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" id="Туризм, гостиницы, рестораны" class="form-check-input" v-model="filterVacancies.profArea" value="Туризм, гостиницы, рестораны"></input>
-                        <label class="form-check-label" for="Туризм, гостиницы, рестораны">Туризм, гостиницы, рестораны</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" id="Управление персоналом, тренинги" class="form-check-input" v-model="filterVacancies.profArea" value="Управление персоналом, тренинги"></input>
-                        <label class="form-check-label" for="Управление персоналом, тренинги">Управление персоналом, тренинги</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" id="Юристы" class="form-check-input" v-model="filterVacancies.profArea" value="Юристы"></input>
-                        <label class="form-check-label" for="Юристы">Юристы</label>
-                    </div>
-
-                    <button class="btn btn-outline-danger mt-3" data-bs-dismiss="modal">Закрыть</button>
-                </div>
-            </div>          
-        </div>
+      </div>
     </div>
-    
+
     <!-- Jquery file -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- bootstrap js file -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
     <!-- FontAwesome icons -->
     <script src="https://kit.fontawesome.com/373834e38f.js" crossorigin="anonymous"></script>
     <!-- Firebase -->
@@ -629,25 +1166,25 @@
     <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-firestore.js"></script>
     <script>
-        const firebaseConfig = {
-            apiKey: "AIzaSyA3EpcSR5NNxzCvRmKe4kq-FZ8uynmYkpQ",
-            authDomain: "jsdev-42eb3.firebaseapp.com",
-            projectId: "jsdev-42eb3",
-            storageBucket: "jsdev-42eb3.appspot.com",
-            messagingSenderId: "300997654447",
-            appId: "1:300997654447:web:3f649525d5ca47ef06e15a",
-            measurementId: "G-7K7BSYBQD2"
-        };
+      const firebaseConfig = {
+        apiKey: 'AIzaSyA3EpcSR5NNxzCvRmKe4kq-FZ8uynmYkpQ',
+        authDomain: 'jsdev-42eb3.firebaseapp.com',
+        projectId: 'jsdev-42eb3',
+        storageBucket: 'jsdev-42eb3.appspot.com',
+        messagingSenderId: '300997654447',
+        appId: '1:300997654447:web:3f649525d5ca47ef06e15a',
+        measurementId: 'G-7K7BSYBQD2',
+      };
 
-        firebase.initializeApp(firebaseConfig);
-        firebase.analytics();
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
 
-        const db = firebase.firestore();
+      const db = firebase.firestore();
     </script>
     <!-- sweetalert2 -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- JS main file -->
     <script src="js/main.js"></script>
     <script src="js/index.js"></script>
-</body>
+  </body>
 </html>

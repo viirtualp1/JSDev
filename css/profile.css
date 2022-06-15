@@ -1,30 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 
-.modal-content { padding: 1.5rem; }
-
-#keySkills-content { width: 600px; }
-#workplaces-content { width: 600px; }
-
-.card-workplace { display: inline-block; }
-
-.keySkill { 
-    font-size: 1rem; 
-    padding: 0.5rem;
-    margin-top: 1rem;
+.modal-content {
+  padding: 1.5rem;
 }
 
-.deleteKeySkill { 
-    margin-left: 0.5rem; 
-    cursor: pointer; 
-    color: rgb(59, 59, 59); 
-    font-size: 0.9rem; 
+#keySkills-content {
+  width: 600px;
+}
+#workplaces-content {
+  width: 600px;
 }
 
-#create-resume-btn { 
-    width: 150px;
-    margin: auto;
+.card-workplace {
+  display: inline-block;
+}
+
+.keySkill {
+  font-size: 1rem;
+  padding: 0.5rem;
+  margin-top: 1rem;
+}
+
+.deleteKeySkill {
+  margin-left: 0.5rem;
+  cursor: pointer;
+  color: rgb(59, 59, 59);
+  font-size: 0.9rem;
+}
+
+#create-resume-btn {
+  width: 150px;
+  margin: auto;
 }
 
 @media screen and (max-width: 600px) {
-    #keySkills-content, #workplaces-content { width: 400px; }
+  #keySkills-content,
+  #workplaces-content {
+    width: 400px;
+  }
 }

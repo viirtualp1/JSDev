@@ -1,21 +1,33 @@
-#info-icon { color: rgb(87, 87, 87); }
-#info-span { cursor: pointer; }
-
-.changeSkill-btn { color: #198754; }
-
-.keySkill { 
-    font-size: 1rem; 
-    padding: 0.5rem;
-    margin-top: 1rem;
+#info-icon {
+  color: rgb(87, 87, 87);
+}
+#info-span {
+  cursor: pointer;
 }
 
-.deleteKeySkill { 
-    margin-left: 0.5rem; 
-    cursor: pointer; 
-    color: rgb(59, 59, 59); 
-    font-size: 0.9rem; 
+.changeSkill-btn {
+  color: #198754;
 }
 
-.edit { font-size: 0.8rem; cursor: pointer; margin-left: 0.5rem; }
+.keySkill {
+  font-size: 1rem;
+  padding: 0.5rem;
+  margin-top: 1rem;
+}
 
-.editSkill { width: 150px; }
+.deleteKeySkill {
+  margin-left: 0.5rem;
+  cursor: pointer;
+  color: rgb(59, 59, 59);
+  font-size: 0.9rem;
+}
+
+.edit {
+  font-size: 0.8rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+.editSkill {
+  width: 150px;
+}
