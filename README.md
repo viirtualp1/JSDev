@@ -4,7 +4,7 @@ Job Search Website (for portfolio)
 
 # TODO
      1. Make an output of vacancies from the *READY* database
-     2. Make your job search *READY*
+     2. Make your job search ***READY***
      3. Make the job filter *READY*
      4. Make "Recommended to you personally" *READY*
      5. Apply for a vacancy:
