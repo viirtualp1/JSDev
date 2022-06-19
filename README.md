@@ -2,7 +2,7 @@
 
 Job Search Website (for portfolio) 
 
-# TODO:
+# TODO
      1. Make an output of vacancies from the READY database
      2. Make your job search READY
      3. Make the job filter READY
